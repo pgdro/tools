@@ -27,6 +27,8 @@ import java.util.stream.Collectors;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
+import io.github.pgdro.tools.core.file.FileOperationsClass;
+
 /**
  * Handling basic structures: numbers, lists, maps, strings
  */

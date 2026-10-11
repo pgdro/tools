@@ -12,7 +12,7 @@ import picocli.CommandLine.Option;
 /**
  * Common class for Interactive service
  */
-public final class CommonInteractiveClass {
+public final class InteractiveInputClass {
     /** Constant for non or single/one */
     /* default */ public static final String ARITY_NONE_OR_ONE = "0..1";
     /** arity one or more */
@@ -303,7 +303,7 @@ public final class CommonInteractiveClass {
     /**
      * Constructor
      */
-    private CommonInteractiveClass() {
+    private InteractiveInputClass() {
         // intentionally blank
     }
 

@@ -36,15 +36,15 @@ Various Java classes to be re-used
 
 ## Java
 
-* [JDK Releases](https://www.java.com/releases/matrix/)
 * [Java 25 is Here !!! Getting Started with the New LTS Release | Features and Installation Guide](https://dev.to/bsanju/java-25-is-here-getting-started-with-the-new-lts-release-features-and-installation-guide-eka)
-
-* [JDK Comparison](https://jdkcomparison.com/?versions=25)
-
-* [OpenJDK by Adoptium aka Eclipse Temurin](https://adoptium.net/temurin/releases?version=25&mode=filter&os=windows&arch=x64)
-* [OpenJDK by Azul](https://www.azul.com/downloads/?os=windows&package=jdk#zulu)
+* [JDK 25 Comparison](https://jdkcomparison.com/?versions=25)
+* [JDK 27 Comparison](https://jdkcomparison.com/?versions=27)
+* [JDK by Adoptium aka Eclipse Temurin](https://adoptium.net/temurin/releases?version=25&mode=filter&os=windows&arch=x64)
+* [JDK by Azul](https://www.azul.com/downloads/?os=windows&package=jdk#zulu)
+* [JDK by Microsoft](https://learn.microsoft.com/en-us/java/openjdk/download)
+* [JDK by SapMachine](https://sapmachine.io/download/)
+* [JDK Releases](https://www.java.com/releases/matrix/)
 * [OpenJDK by Java.Net](https://jdk.java.net/)
-* [OpenJDK by Microsoft](https://learn.microsoft.com/en-us/java/openjdk/download)
 
 
 ### Java Coding
@@ -106,8 +106,9 @@ Various Java classes to be re-used
 * [Log4j Common Conversion Patterns Example](https://www.codejava.net/coding/common-conversion-patterns-for-log4js-patternlayout)
 * [Log4j2 – Useful Log Format Pattern Layouts](https://howtodoinjava.com/log4j2/useful-conversion-pattern-examples/)
 * [Log4j2 XML Configuration: Log4j2.xml Example](https://howtodoinjava.com/log4j2/log4j2-xml-configuration-example/)
-* [Programmatic Configuration with Log4j 2](https://www.baeldung.com/log4j2-programmatic-config)
 * [Log4j2 Levels](https://github.com/apache/logging-log4j2/blob/2.x/log4j-core/src/main/resources/Log4j-levels.xsd)
+* [Logging Levels](https://howtodoinjava.com/log4j2/logging-levels/)
+* [Programmatic Configuration with Log4j 2](https://www.baeldung.com/log4j2-programmatic-config)
 
 
 ### Java Security
@@ -122,7 +123,6 @@ Various Java classes to be re-used
 * [Java String.format()](https://www.baeldung.com/string-format)
 * [Java String format() Method](https://www.geeksforgeeks.org/java-string-format-method-with-examples/)
 * [Java String format() Method With Examples](https://firstcode.school/java-string-format-method/)
-* [Logging Levels](https://howtodoinjava.com/log4j2/logging-levels/)
 
 
 ### Java Time Management

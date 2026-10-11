@@ -3,10 +3,10 @@ package io.github.pgdro.tools.dynamic.database;
 
 import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.ConfigurationClass;
-import io.github.pgdro.tools.core.FileContentClass;
-import io.github.pgdro.tools.core.FileOperationsClass;
 import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.RegularExpressionsClass;
+import io.github.pgdro.tools.core.file.FileContentClass;
+import io.github.pgdro.tools.core.file.FileOperationsClass;
 import io.github.pgdro.tools.core.time.TimingClass;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

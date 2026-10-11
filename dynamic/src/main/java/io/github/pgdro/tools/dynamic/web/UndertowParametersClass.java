@@ -1,6 +1,7 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
 package io.github.pgdro.tools.dynamic.web;
 
+import io.github.pgdro.tools.core.RegularExpressionsClass;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.util.HeaderMap;
 import io.undertow.util.Headers;
@@ -48,10 +49,13 @@ public final class UndertowParametersClass {
      *  location header and end the exchange
      */
     public static void redirectPageIfNeeded(final HttpServerExchange exchange) {
-        if (queryParams.get("redirectAction") != null) {
+        final Deque<String> redirectParameter = queryParams.get("redirectAction");
+        if (redirectParameter != null) {
             exchange.setStatusCode(StatusCodes.SEE_OTHER); // 303 Redirect
             final HeaderMap responseHeader = getResponseHeader(exchange);
-            responseHeader.put(Headers.LOCATION, "/?" + queryParams.get("redirectAction").getFirst());
+            final String redirectLocation = "/?"
+                    + redirectParameter.getFirst().replaceAll(RegularExpressionsClass.REGEXP_CLEAN_CHRS, "");
+            responseHeader.put(Headers.LOCATION, redirectLocation);
             exchange.endExchange();
         }
     }
@@ -61,7 +65,10 @@ public final class UndertowParametersClass {
      */
     public static void setPageParameter() {
         final Deque<String> pageParams = queryParams.get("page");
-        parameterPage = (pageParams == null) ? "home" : pageParams.getFirst();
+        parameterPage = "home";
+        if (pageParams != null) {
+            parameterPage = pageParams.getFirst().replaceAll(RegularExpressionsClass.REGEXP_CLEAN_CHRS, "");
+        }
     }
 
     /**

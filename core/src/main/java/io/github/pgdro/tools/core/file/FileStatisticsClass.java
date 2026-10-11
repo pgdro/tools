@@ -1,5 +1,8 @@
-package io.github.pgdro.tools.core;
+package io.github.pgdro.tools.core.file;
 
+import io.github.pgdro.tools.core.BasicStructuresClass;
+import io.github.pgdro.tools.core.ConfigurationClass;
+import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.time.TimingClass;
 import io.github.pgdro.tools.core.time.TimingClass.AgingSubClass;
 import java.io.BufferedWriter;

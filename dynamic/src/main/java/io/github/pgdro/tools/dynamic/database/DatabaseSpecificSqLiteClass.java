@@ -3,9 +3,9 @@ package io.github.pgdro.tools.dynamic.database;
 
 import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.ConfigurationClass;
-import io.github.pgdro.tools.core.FileOperationsClass;
 import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.RegularExpressionsClass;
+import io.github.pgdro.tools.core.file.FileOperationsClass;
 import io.github.pgdro.tools.dynamic.database.DatabaseOperationsClass.ConnectivitySubClass;
 import io.github.pgdro.tools.dynamic.database.DatabaseOperationsClass.ResultSettingSubClass;
 import java.io.IOException;

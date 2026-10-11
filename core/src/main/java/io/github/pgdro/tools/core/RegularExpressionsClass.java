@@ -63,6 +63,10 @@ public final class RegularExpressionsClass {
     /** Regular Expression for byte size value and unit of measure */
     private static final String REGEXP_BYTE_SIZE
             = "\\d*\\.?\\d*\\s(byte|bytes|KB|KiB|MB|MiB|GB|GiB|TB|TiB|PB|PiB|EB|EiB)";
+    /** Regular Expression for cleaner String */
+    public static final String REGEXP_CLEAN_CHRS = "^[^A-Za-z0-9]$";
+    /** Regular Expression for cleaner String */
+    public static final String REGEXP_CLEAN_STR = "^[^#&()+,./0-9:;A-Z_`a-z| ]$";
     /** Regular Expression for Date identification/validation */
     private static final String REGEXP_DATE = "(1|2)\\d{3}"
             + "\\-("

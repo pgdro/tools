@@ -3,6 +3,9 @@ package io.github.pgdro.tools.core;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import io.github.pgdro.tools.core.file.FileOperationsClass;
+import io.github.pgdro.tools.core.file.FileStatisticsClass;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

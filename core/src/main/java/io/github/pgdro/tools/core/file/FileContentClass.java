@@ -1,5 +1,8 @@
-package io.github.pgdro.tools.core;
+/** Copyright 2026 Daniel-Gheorghe Popiniuc */
+package io.github.pgdro.tools.core.file;
 
+import io.github.pgdro.tools.core.BasicStructuresClass;
+import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.time.TimingClass;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
