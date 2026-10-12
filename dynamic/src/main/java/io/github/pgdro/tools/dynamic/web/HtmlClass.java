@@ -232,11 +232,17 @@ public final class HtmlClass {
                 outHtml.add(buildLabelTag(objFeatures));
             }
             final Properties propsInput = manageAdditionalAttributesAndDefaults(objFeatures);
-            final boolean isMultiple = objFeatures
+            final boolean isMultiple = !objFeatures
                     .getOrDefault(ConfigurationClass.STR_MULTIPLE, "")
                     .toString()
                     .isEmpty();
-            final String strName = objFeatures.get(ConfigurationClass.STR_NAME) + (isMultiple ? "" : "[]");
+            final String strName = objFeatures.get(ConfigurationClass.STR_NAME) + (isMultiple ? "[]" : "");
+            final String strFeedback = String.format(
+                    "For Select Input named %s features are %s and computer Properties %s",
+                    strName,
+                    objFeatures,
+                    propsInput);
+            LogExposureClass.LOGGER.debug(strFeedback);
             outHtml.add(String.format("<select name=\"%s\" id=\"%s\"%s>",
                     strName,
                     objFeatures.get("Id"),
@@ -263,8 +269,6 @@ public final class HtmlClass {
         private static Properties manageAdditionalAttributesAndDefaults(final @NonNull Properties objFeatures) {
             final Properties propsInput = new Properties();
             String additionalAttrib = "";
-            final String defaultValue
-                    = objFeatures.getOrDefault(ConfigurationClass.STR_DEFAULT, "").toString();
             if (!objFeatures.getOrDefault(ConfigurationClass.STR_MULTIPLE, "").toString().isEmpty()) {
                 additionalAttrib = String.format(" multiple size=\"%s\"",
                         objFeatures.get(ConfigurationClass.STR_MULTIPLE));
@@ -277,7 +281,7 @@ public final class HtmlClass {
                  additionalAttrib += " onChange=\"javascript:this.form.submit();\"";
             }
             propsInput.put("Additional", additionalAttrib);
-            propsInput.put("Defaults", defaultValue);
+            propsInput.put("Defaults", objFeatures.getOrDefault(ConfigurationClass.STR_DEFAULT, "").toString());
             return propsInput;
         }
 

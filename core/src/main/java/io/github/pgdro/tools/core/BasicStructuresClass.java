@@ -1,6 +1,7 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
 package io.github.pgdro.tools.core;
 
+import io.github.pgdro.tools.core.file.FileOperationsClass;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -26,8 +27,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
-
-import io.github.pgdro.tools.core.file.FileOperationsClass;
 
 /**
  * Handling basic structures: numbers, lists, maps, strings
