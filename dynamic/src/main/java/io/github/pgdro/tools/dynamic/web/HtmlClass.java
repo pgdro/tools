@@ -197,14 +197,6 @@ public final class HtmlClass {
      * List and Maps management
      */
     public static final class SelectInputSubClass {
-        /**
-         * Variable for Defaults
-         */
-        private static List<String> defaults = new ArrayList<>();
-        /**
-         * Variable for Additional Attributes
-         */
-        private static String additionalAttrib = "";
 
         /**
          * build Label as HTML tag
@@ -239,15 +231,20 @@ public final class HtmlClass {
             if (!objFeatures.getOrDefault(ConfigurationClass.STR_LABEL, "").toString().isEmpty()) {
                 outHtml.add(buildLabelTag(objFeatures));
             }
-            manageAdditionalAttributesAndDefaults(objFeatures);
-            final String strName = objFeatures.get(ConfigurationClass.STR_NAME)
-                    + (objFeatures.getOrDefault(ConfigurationClass.STR_MULTIPLE, "").toString().isEmpty()
-                        ? ""
-                        : "[]");
+            final Properties propsInput = manageAdditionalAttributesAndDefaults(objFeatures);
+            final boolean isMultiple = objFeatures
+                    .getOrDefault(ConfigurationClass.STR_MULTIPLE, "")
+                    .toString()
+                    .isEmpty();
+            final String strName = objFeatures.get(ConfigurationClass.STR_NAME) + (isMultiple ? "" : "[]");
             outHtml.add(String.format("<select name=\"%s\" id=\"%s\"%s>",
                     strName,
                     objFeatures.get("Id"),
-                    additionalAttrib));
+                    propsInput.get("Additional")));
+            final String rawDefaults = propsInput.get("Defaults").toString();
+            final List<String> defaults = isMultiple
+                    ? Arrays.asList(rawDefaults.split(","))
+                    : Arrays.asList(rawDefaults);
             mapValues.forEach((strValue, strText) -> {
                 final String strSelected = !defaults.isEmpty() && defaults.contains(strValue) ? " selected" : "";
                 outHtml.add(String.format("<option value=\"%s\"%s>%s</option>",
@@ -263,14 +260,12 @@ public final class HtmlClass {
          * Additional attributes logic
          * @param objFeatures packed attributes
          */
-        private static void manageAdditionalAttributesAndDefaults(final @NonNull Properties objFeatures) {
+        private static Properties manageAdditionalAttributesAndDefaults(final @NonNull Properties objFeatures) {
+            final Properties propsInput = new Properties();
+            String additionalAttrib = "";
             final String defaultValue
                     = objFeatures.getOrDefault(ConfigurationClass.STR_DEFAULT, "").toString();
-            String[] defaultVals = {defaultValue};
             if (!objFeatures.getOrDefault(ConfigurationClass.STR_MULTIPLE, "").toString().isEmpty()) {
-                if (!defaultValue.isEmpty()) {
-                    defaultVals = defaultValue.split(",");
-                }
                 additionalAttrib = String.format(" multiple size=\"%s\"",
                         objFeatures.get(ConfigurationClass.STR_MULTIPLE));
             }
@@ -281,7 +276,9 @@ public final class HtmlClass {
             if (!autoSubmit.isEmpty()) {
                  additionalAttrib += " onChange=\"javascript:this.form.submit();\"";
             }
-            defaults = Arrays.asList(defaultVals);
+            propsInput.put("Additional", additionalAttrib);
+            propsInput.put("Defaults", defaultValue);
+            return propsInput;
         }
 
         /**
