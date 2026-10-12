@@ -85,7 +85,7 @@
         <open-java-format.version>2.98.0.6</open-java-format.version>
         <pmd.version>7.28.0</pmd.version>
         <takari-lifecycle-plugin.version>2.3.4</takari-lifecycle-plugin.version>
-        <versions-maven-plugin.version>2.22.0</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.23.0</versions-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
