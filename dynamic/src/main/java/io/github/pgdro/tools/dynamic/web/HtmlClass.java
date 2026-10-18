@@ -19,13 +19,14 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.SequencedMap;
+import java.util.concurrent.atomic.AtomicReference;
+
 import org.jspecify.annotations.NonNull;
 
 /**
@@ -308,7 +309,7 @@ public final class HtmlClass {
         private static String strOutTimeZone;
 
         /** Per-call mutable context to avoid shared static state. */
-        private static final class TableBuildContextSubClass {
+        static final class TableBuildContextSubClass {
             /** Variable for current Tab */
             private String currentTabValue;
             /** Variable for lines within Table */
@@ -405,6 +406,17 @@ public final class HtmlClass {
             private static final class RowSubSubSubClass {
                 /** Variable for specialValues */
                 private static final SequencedMap<String, SpValuesRecord> MAP_SPEC_VALS = new LinkedHashMap<>();
+                /** Variable for conversion patterns */
+                private static final List<String> LIST_PATTERNS = List.of(
+                        "decimal",
+                        "integer",
+                        "long",
+                        ConfigurationClass.STR_TS_MSEC,
+                        ConfigurationClass.STR_TIMESTAMP,
+                        ConfigurationClass.STR_DATE_HRMN,
+                        ConfigurationClass.STR_JUST_DATE,
+                        "byteSize",
+                        "fullAging");
 
                 /** Record for ZoneInfo */
                 /* default */ public record SpValuesRecord(
@@ -484,88 +496,25 @@ public final class HtmlClass {
                             cellStyle = strValue.equals(inValue.toString()) ? cellStyle : CSS_TEXT_RIGHT_NW;
                         }
                     }
-                    return Map.of(
-                            ConfigurationClass.STR_STYLE,
-                            cellStyle,
-                            "value",
-                            strValue);
+                    return Map.of(ConfigurationClass.STR_STYLE, cellStyle, "value", strValue);
                 }
 
                 /**
                  * Transform 1 value by Given Pattern
-                 * @param inputString input value
-                 * @param crtPattern matching pattern
-                 * @return String
+                 * @param inString input value
+                 * @return String transformed
                  */
-                private static String transformSingleValueByPattern(
-                        final String inputString,
-                        final String crtPattern) {
-                    return switch (crtPattern) {
-                        case "decimal"
-                                -> BasicStructuresClass
-                                    .StringTransformationSubClass
-                                    .formatStringWithDecimalContentWithThousandDecimalSeparator(inputString);
-                        case "integer"
-                                -> String.format(
-                                        Locale.US,
-                                        "%,d",
-                                        BasicStructuresClass.convertStringIntoInteger(inputString));
-                        case "long"
-                                -> String.format(
-                                        Locale.US,
-                                        "%,d",
-                                        BasicStructuresClass.convertStringIntoLong(inputString));
-                        case ConfigurationClass.STR_JUST_DATE
-                                -> TimingClass.LocalizationSubClass.formatDateFriendly(
-                                        inputString,
-                                        TimingClass.ISO_DATE,
-                                        TimingClass.ISO_DATE_ABRV);
-                        case ConfigurationClass.STR_TIMESTAMP
-                                -> TimingClass.LocalizationSubClass.convertTimestampFriendly(
-                                        inputString,
-                                        TimingClass.DATE_TIME,
-                                        TimingClass.DATE_TIME_ABRV);
-                        case ConfigurationClass.STR_TS_MSEC
-                                -> TimingClass.LocalizationSubClass.convertTimestampFriendly(
-                                        inputString,
-                                        TimingClass.DATE_TIME_MS,
-                                        TimingClass.DATE_TIME_MS_ABRV);
-                        case "byteSize", "fullAging"
-                                -> inputString;
-                        default
-                                -> "";
-                    };
-                }
-
-                /**
-                 * Transform 1 value by Given Pattern
-                 * @param inputString input value
-                 * @return String
-                 */
-                private static String transformValueByPatternMatch(final @NonNull String inputString) {
-                    String outputString = null;
-                    final List<String> arrayPatterns = List.of(
-                            "decimal",
-                            "integer",
-                            "long",
-                            ConfigurationClass.STR_TS_MSEC,
-                            ConfigurationClass.STR_TIMESTAMP,
-                            ConfigurationClass.STR_JUST_DATE,
-                            "byteSize",
-                            "fullAging");
-                    final Iterator<String> itArray = arrayPatterns.iterator();
-                    boolean needsToContinue = true;
-                    while (itArray.hasNext()
-                            && needsToContinue) {
-                        final String crtPattern = itArray.next();
+                private static String transformValueByPatternMatch(@NonNull final String inString) {
+                    final AtomicReference<String> strTransformed = new AtomicReference<>();
+                    LIST_PATTERNS.forEach(crtPattern -> {
                         if (RegularExpressionsClass
                                 .ValidationSubClass
-                                .isStringActuallySomething(inputString, crtPattern)) {
-                            outputString = transformSingleValueByPattern(inputString, crtPattern);
-                            needsToContinue = false;
+                                .isStringActuallySomething(inString, crtPattern)) {
+                            final ConversionsClass cLogic = new ConversionsClass();
+                            strTransformed.set(cLogic.dispatch(crtPattern, inString));
                         }
-                    }
-                    return outputString;
+                    });
+                    return strTransformed.get();
                 }
 
             }

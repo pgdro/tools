@@ -33,6 +33,12 @@ import org.jspecify.annotations.Nullable;
  * Time methods
  */
 public final class TimingClass {
+    /** constant for date with hour and minute */
+    public static final String DATE_HRMN = "yyyy-MM-dd HH:mm";
+    /** constant for abbreviated date with hour and minute */
+    public static final String DATE_HRMN_ABRV = "EEE, dd MMM yyyy HH:mm";
+    /** constant for long date with hour and minute */
+    public static final String DATE_HRMN_LONG = "EEEE, dd MMM yyyyy HH:mm";
     /** constant for time-stamp SQL-style with seconds */
     public static final String DATE_TIME = "yyyy-MM-dd HH:mm:ss";
     /** constant for abbreviated time-stamp with seconds */
@@ -516,6 +522,10 @@ public final class TimingClass {
                 if (BasicStructuresClass.StringEvaluationSubClass.isStringActuallyTimestampWithMilliseconds(inDate)) {
                     zonedDateTime = LocalDateTime.parse(inDate, inTimeFormat).atZone(ZoneId.of(inputTimeZone));
                 } else if (BasicStructuresClass.StringEvaluationSubClass.isStringActuallyTimestamp(inDate)) {
+                    zonedDateTime = LocalDateTime.parse(inDate, inTimeFormat).atZone(ZoneId.of(inputTimeZone));
+                } else if (BasicStructuresClass
+                        .StringEvaluationSubClass
+                        .isStringActuallyDateWithHourAndMinutes(inDate)) {
                     zonedDateTime = LocalDateTime.parse(inDate, inTimeFormat).atZone(ZoneId.of(inputTimeZone));
                 } else if (BasicStructuresClass.StringEvaluationSubClass.isStringActuallyDate(inDate)) {
                     zonedDateTime = LocalDate.parse(inDate, inTimeFormat).atStartOfDay(ZoneId.of(inputTimeZone));

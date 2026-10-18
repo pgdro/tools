@@ -25,6 +25,8 @@ public final class ConfigurationClass {
     public static final String STR_CONTENT = "Content";
     /** Counter constant */
     public static final String STR_COUNTER = "Counter";
+    /** Date with Hour and Minute constant */
+    public static final String STR_DATE_HRMN = "dateHourMinute";
     /** decimal constant */
     public static final String STR_DECIMAL = "decimal";
     /** Default constant */

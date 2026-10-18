@@ -705,6 +705,17 @@ public final class BasicStructuresClass {
         }
 
         /**
+         * Check if String is actually Date w. Hours and Minutes
+         *
+         * @param inputString string to evaluate
+         * @return True if given String is actually Date
+         */
+        public static boolean isStringActuallyDateWithHourAndMinutes(final String inputString) {
+            return RegularExpressionsClass.ValidationSubClass.isStringActuallySomething(inputString,
+                    ConfigurationClass.STR_DATE_HRMN);
+        }
+
+        /**
          * Check if String is actually Decimal
          *
          * @param inputString string to evaluate

@@ -74,6 +74,8 @@ public final class RegularExpressionsClass {
             + "|(04|06|09|11)\\-(0[1-9]|[1-2]\\d|30)" // month w. 30 days
             + "|02\\-(0[1-9]|[1-2]\\d)" // month w. 28/29 days (February)
             + ")";
+    /** Regular Expression for Date with Hour and Minute identification/validation */
+    private static final String REGEXP_DATE_HRMN = REGEXP_DATE + "\\s([0-1]\\d|2[0-3])\\:[0-5]\\d";
     /** Regular Expression for Latitude */
     private static final String REGEXP_LATITUDE = "([+-])(\\d{2})(\\d{2})(\\d{2})?";
     /** Regular Expression for Longitude */
@@ -147,6 +149,7 @@ public final class RegularExpressionsClass {
         sortedRegExp.put(STR_AGING_TIME, REGEXP_AGE_TIME);
         sortedRegExp.put(ConfigurationClass.STR_TS_MSEC, "");
         sortedRegExp.put(ConfigurationClass.STR_TIMESTAMP, "");
+        sortedRegExp.put(ConfigurationClass.STR_DATE_HRMN, "");
         sortedRegExp.put(ConfigurationClass.STR_JUST_DATE, "");
         final StringJoiner sjRegExp = new StringJoiner("|");
         sortedRegExp.forEach((key, value) -> {
@@ -247,6 +250,7 @@ public final class RegularExpressionsClass {
                 STR_AGING_DATE,
                 ConfigurationClass.STR_TS_MSEC,
                 ConfigurationClass.STR_TIMESTAMP,
+                ConfigurationClass.STR_DATE_HRMN,
                 ConfigurationClass.STR_JUST_DATE);
         return capturedGroups.stream()
                 .filter(groupName -> result.group(groupName) != null)
@@ -278,6 +282,12 @@ public final class RegularExpressionsClass {
                         TimingClass.DATE_TIME_LONG,
                         TimingClass.DATE_TIME_ABRV,
                         REGEXP_TS));
+        MAP_PATTERNS.put(ConfigurationClass.STR_DATE_HRMN,
+                new DateTimeInfoRec(
+                        TimingClass.DATE_HRMN,
+                        TimingClass.DATE_HRMN_LONG,
+                        TimingClass.DATE_HRMN_ABRV,
+                        REGEXP_DATE_HRMN));
         MAP_PATTERNS.put(ConfigurationClass.STR_JUST_DATE,
                 new DateTimeInfoRec(
                         TimingClass.ISO_DATE,
@@ -354,43 +364,7 @@ public final class RegularExpressionsClass {
             final Pattern pattern       = Pattern.compile(agingRegExp);
             final boolean isAgingString = pattern.matcher(inString).matches();
             if (isAgingString) {
-                int years      = 0;
-                int months     = 0;
-                int days       = 0;
-                int intHours   = 0;
-                int intMinutes = 0;
-                int intSeconds = 0;
-                int milli      = 0;
-                switch (strLength) {
-                    case 9:
-                        intHours   = Integer.parseInt(inString.substring(1, 3));
-                        intMinutes = Integer.parseInt(inString.substring(4, 6));
-                        intSeconds = Integer.parseInt(inString.substring(7, 9));
-                        break;
-                    case 11:
-                        years      = Integer.parseInt(inString.substring(1, 5));
-                        months     = Integer.parseInt(inString.substring(6, 8));
-                        days       = Integer.parseInt(inString.substring(9, 11));
-                        break;
-                    case 20, 24:
-                        years      = Integer.parseInt(inString.substring(1, 5));
-                        months     = Integer.parseInt(inString.substring(6, 8));
-                        days       = Integer.parseInt(inString.substring(9, 11));
-                        intHours   = Integer.parseInt(inString.substring(12, 14));
-                        intMinutes = Integer.parseInt(inString.substring(15, 17));
-                        intSeconds = Integer.parseInt(inString.substring(18, 20));
-                        milli      = strLength == 24 ? Integer.parseInt(inString.substring(21, 24)) : 0;
-                        break;
-                    default:
-                        // intentionally blank
-                        break;
-                }
-                final int weeks = Math.floorDivExact(days, 7);
-                if (weeks != 0) {
-                    days = days - 7 * weeks;
-                }
-                return new TimingClass.AgingInfoRecord(
-                        false, years, months, weeks, days, intHours, intMinutes, intSeconds, milli);
+                return convertAgingTimestampStringIntoAgingComponentsRaw(inString, strLength);
             } else {
                 final String strFeedbackErr = String.format(
                         "Given input String %s does not seem to be an Aging Timestamp String... %s",
@@ -401,6 +375,61 @@ public final class RegularExpressionsClass {
                                 .orElse(LogExposureClass.STR_I18N_UNKN)));
                 throw new UnsupportedOperationException(strFeedbackErr);
             }
+        }
+
+        /**
+         * convert Aging String into Aging Components
+         * @param inString input String to convert
+         * @param strLength length of the input String
+         * @return AgingInfoRecord with components
+         */
+        private static TimingClass.AgingInfoRecord convertAgingTimestampStringIntoAgingComponentsRaw(
+                final String inString,
+                final int strLength) {
+            int years      = 0;
+            int months     = 0;
+            int days       = 0;
+            int intHours   = 0;
+            int intMinutes = 0;
+            int intSeconds = 0;
+            int milli      = 0;
+            switch (strLength) {
+                case 9:
+                    intHours   = Integer.parseInt(inString.substring(1, 3));
+                    intMinutes = Integer.parseInt(inString.substring(4, 6));
+                    intSeconds = Integer.parseInt(inString.substring(7, 9));
+                    break;
+                case 11:
+                    years      = Integer.parseInt(inString.substring(1, 5));
+                    months     = Integer.parseInt(inString.substring(6, 8));
+                    days       = Integer.parseInt(inString.substring(9, 11));
+                    break;
+                case 16:
+                    years      = Integer.parseInt(inString.substring(1, 5));
+                    months     = Integer.parseInt(inString.substring(6, 8));
+                    days       = Integer.parseInt(inString.substring(9, 11));
+                    intHours   = Integer.parseInt(inString.substring(12, 14));
+                    intMinutes = Integer.parseInt(inString.substring(15, 17));
+                    break;
+                case 20, 24:
+                    years      = Integer.parseInt(inString.substring(1, 5));
+                    months     = Integer.parseInt(inString.substring(6, 8));
+                    days       = Integer.parseInt(inString.substring(9, 11));
+                    intHours   = Integer.parseInt(inString.substring(12, 14));
+                    intMinutes = Integer.parseInt(inString.substring(15, 17));
+                    intSeconds = Integer.parseInt(inString.substring(18, 20));
+                    milli      = strLength == 24 ? Integer.parseInt(inString.substring(21, 24)) : 0;
+                    break;
+                default:
+                    // intentionally blank
+                    break;
+            }
+            final int weeks = Math.floorDivExact(days, 7);
+            if (weeks != 0) {
+                days = days - 7 * weeks;
+            }
+            return new TimingClass.AgingInfoRecord(
+                    false, years, months, weeks, days, intHours, intMinutes, intSeconds, milli);
         }
 
         /**
@@ -503,6 +532,7 @@ public final class RegularExpressionsClass {
             REG_EXP_PROPS.put(STR_AGING_DATE, REGEXP_AGE_DATE9);
             REG_EXP_PROPS.put(ConfigurationClass.STR_TIMESTAMP, REGEXP_TS);
             REG_EXP_PROPS.put(ConfigurationClass.STR_TS_MSEC, REGEXP_TS_MS);
+            REG_EXP_PROPS.put(ConfigurationClass.STR_DATE_HRMN, REGEXP_DATE_HRMN);
             REG_EXP_PROPS.put(ConfigurationClass.STR_JUST_DATE, REGEXP_DATE);
             REG_EXP_PROPS.put("version", REGEXP_VERSION);
         }
