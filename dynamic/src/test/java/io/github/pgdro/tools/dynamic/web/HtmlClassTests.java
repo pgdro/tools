@@ -88,7 +88,7 @@ class HtmlClassTests {
     }
 
     @SuppressWarnings("null")
-	@Test
+    @Test
     @DisplayName("HtmlClass.buildFileInfoBox produces div with time zones")
     void buildFileInfoBox() throws IOException {
         final Path tempFile = Files.createTempFile("fileops-test-file-", ".txt");

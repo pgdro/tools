@@ -11,7 +11,6 @@ import io.github.pgdro.tools.core.time.ZoneDataServiceClass;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.Serializable;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -198,6 +197,8 @@ public final class HtmlClass {
      * List and Maps management
      */
     public static final class SelectInputSubClass {
+        /** Variable for multiple value glue character */
+        /* default */ private static String multiValueGlue = ",";
 
         /**
          * build Label as HTML tag
@@ -248,8 +249,7 @@ public final class HtmlClass {
                     strName,
                     objFeatures.get("Id"),
                     propsInput.get("Additional")));
-            final String rawDefaults = propsInput.get("Defaults").toString();
-            final List<Serializable> defaults = Arrays.asList(isMultiple ? rawDefaults.split(",") : rawDefaults);
+            final List<String> defaults = getDefaultsFromProperties(propsInput, isMultiple);
             mapValues.forEach((strValue, strText) -> {
                 final String strSelected = !defaults.isEmpty() && defaults.contains(strValue) ? " selected" : "";
                 outHtml.add(String.format("<option value=\"%s\"%s>%s</option>",
@@ -259,6 +259,21 @@ public final class HtmlClass {
             });
             outHtml.add("</select>");
             return String.join("", outHtml);
+        }
+
+        /**
+         * get Default as List of Strings
+         * @param propsInput input Properties
+         * @param isMultiple true if multiple values are allowed
+         * @return List of Strings
+         */
+        private static List<String> getDefaultsFromProperties(final Properties propsInput, final boolean isMultiple) {
+            final String rawDefaults = propsInput.get("Defaults").toString();
+            List<String> defaults = Arrays.asList(rawDefaults);
+            if (isMultiple) {
+                defaults = Arrays.asList(rawDefaults.split(multiValueGlue));
+            }
+            return defaults;
         }
 
         /**
@@ -282,6 +297,14 @@ public final class HtmlClass {
             propsInput.put("Additional", additionalAttrib);
             propsInput.put("Defaults", objFeatures.getOrDefault(ConfigurationClass.STR_DEFAULT, "").toString());
             return propsInput;
+        }
+
+        /**
+         * Setter for multiValueGlue
+         * @param inMultiValueGlue customized value for multiValueGlue
+         */
+        public static void setMultiValueGlue(final String inMultiValueGlue) {
+            multiValueGlue = inMultiValueGlue;
         }
 
         /**
