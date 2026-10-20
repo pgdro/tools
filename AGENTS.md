@@ -58,10 +58,10 @@ mvn central-publishing:publish
 | File                                                                           | Purpose                                                                                                                              |
 |--------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | `pom.xml` (root)                                                               | Parent POM; declares 11 modules & versions for Jackson, JUnit, SQLite, Picocli, Log4j, JaCoCo, and other build dependencies          |
-| `tools-core/src/main/java/io/github/pgdro/tools/core/*`                       | Core utility classes: BasicStructures, FileOperations, JsonOperations, Timing, Shelling, ProjectClass, UndertowClass, etc.           |
+| `tools-core/src/main/java/io/github/pgdro/tools/core/*`                        | Core utility classes: BasicStructures, FileOperations, JsonOperations, Timing, Shelling, ProjectClass, UndertowClass, etc.           |
 | `tools-core/src/main/resources/project.properties`                             | Windows-specific configuration (System32 paths, PowerShell location)                                                                 |
-| `tools-core/src/test/java/org/pgdro/tools/core/FileOperationsClassTest.java`  | Example JUnit 6 tests                                                                                                                |
-| `tools-dynamic/src/main/java/org/pgdro/tools/dynamic/*`                       | Database functionality, JSON utility clases and Undertow + JTE wrapper classes for web server operations (utility library, no CLI)   |
+| `tools-core/src/test/java/org/pgdro/tools/core/FileOperationsClassTest.java`   | Example JUnit 6 tests                                                                                                                |
+| `tools-dynamic/src/main/java/org/pgdro/tools/dynamic/*`                        | Database functionality, JSON utility clases and Undertow + JTE wrapper classes for web server operations (utility library, no CLI)   |
 | `tools-dynamic/src/main/resources/undertow.properties`                         | Web server defaults                                                                                                                  |
 
 ## Project-Specific Conventions
