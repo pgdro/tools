@@ -6,30 +6,30 @@ import io.github.pgdro.tools.core.ConfigurationClass;
 import io.github.pgdro.tools.core.time.TimingClass;
 import java.util.Locale;
 import java.util.Map;
-import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 /**
  * Conversions logic
  */
 public final class ConversionsClass {
     /** variable for dynamic commands */
-    private final Map<String, Function<String, String>> converters = Map.ofEntries(
-            Map.entry("decimal", this::convertDecimalWithThousandDecimalSeparator),
-            Map.entry("integer", this::convertInteger),
-            Map.entry("long", this::convertLong),
-            Map.entry(ConfigurationClass.STR_TS_MSEC, this::convertTimestampWithMilliseconds),
+    private final Map<String, UnaryOperator<String>> converters = Map.ofEntries(
+            Map.entry("decimal",                        this::convertDecimalWithThousandDecimalSeparator),
+            Map.entry("integer",                        this::convertInteger),
+            Map.entry("long",                           this::convertLong),
+            Map.entry(ConfigurationClass.STR_TS_MSEC,   this::convertTimestampWithMilliseconds),
             Map.entry(ConfigurationClass.STR_TIMESTAMP, this::convertTimestamp),
             Map.entry(ConfigurationClass.STR_DATE_HRMN, this::convertDateWithHourAndMinute),
             Map.entry(ConfigurationClass.STR_JUST_DATE, this::convertDate),
-            Map.entry("byteSize", this::exposeRaw),
-            Map.entry("fullAging", this::exposeRaw)
+            Map.entry("byteSize",                       this::exposeRaw),
+            Map.entry("fullAging",                      this::exposeRaw)
     );
 
     /**
      * constructor
      */
     public ConversionsClass() {
-        super();
+        // intentionally blank
     }
 
     /**
@@ -73,7 +73,7 @@ public final class ConversionsClass {
      * @return converted String
      */
     private String convertDate(final String inputString) {
-	return TimingClass.LocalizationSubClass.formatDateFriendly(
+        return TimingClass.LocalizationSubClass.formatDateFriendly(
                 inputString,
                 TimingClass.ISO_DATE,
                 TimingClass.ISO_DATE_ABRV);
@@ -122,7 +122,7 @@ public final class ConversionsClass {
      * @return Result
      */
     public String dispatch(final String command, final String inputString) {
-        final Function<String, String> converter = converters.get(command);
+        final UnaryOperator<String> converter = converters.get(command);
         if (converter == null) {
             throw new IllegalArgumentException("Unknown command: " + command);
         }

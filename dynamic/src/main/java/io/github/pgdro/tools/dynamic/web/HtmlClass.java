@@ -11,6 +11,7 @@ import io.github.pgdro.tools.core.time.ZoneDataServiceClass;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -26,7 +27,6 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.SequencedMap;
 import java.util.concurrent.atomic.AtomicReference;
-
 import org.jspecify.annotations.NonNull;
 
 /**
@@ -249,9 +249,7 @@ public final class HtmlClass {
                     objFeatures.get("Id"),
                     propsInput.get("Additional")));
             final String rawDefaults = propsInput.get("Defaults").toString();
-            final List<String> defaults = isMultiple
-                    ? Arrays.asList(rawDefaults.split(","))
-                    : Arrays.asList(rawDefaults);
+            final List<Serializable> defaults = Arrays.asList(isMultiple ? rawDefaults.split(",") : rawDefaults);
             mapValues.forEach((strValue, strText) -> {
                 final String strSelected = !defaults.isEmpty() && defaults.contains(strValue) ? " selected" : "";
                 outHtml.add(String.format("<option value=\"%s\"%s>%s</option>",
