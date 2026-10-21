@@ -87,7 +87,6 @@ class HtmlClassTests {
         );
     }
 
-    @SuppressWarnings("null")
     @Test
     @DisplayName("HtmlClass.buildFileInfoBox produces div with time zones")
     void buildFileInfoBox() throws IOException {
