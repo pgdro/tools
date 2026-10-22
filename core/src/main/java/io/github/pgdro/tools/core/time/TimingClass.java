@@ -82,7 +82,7 @@ public final class TimingClass {
      */
     public static String getCurrentDateTimeLocal() {
         return DateTimeFormatter.ofPattern(DATE_TIME_MS_ABRV, Locale.US)
-                .format(ZonedDateTime.now(ZoneId.systemDefault()));
+                .format(getCurrentZonedDateTime());
     }
 
     /**
@@ -100,7 +100,7 @@ public final class TimingClass {
      */
     public static String getCurrentDateTimeLocalRaw() {
         return DateTimeFormatter.ofPattern(DATE_TIME_MS, Locale.US)
-                .format(ZonedDateTime.now(ZoneId.systemDefault()));
+                .format(getCurrentZonedDateTime());
     }
 
     /**
@@ -109,7 +109,7 @@ public final class TimingClass {
      */
     public static String getCurrentDateTimeUniveralTimeCoordination() {
         return DateTimeFormatter.ofPattern(DATE_TIME_MS, Locale.US)
-                .format(ZonedDateTime.now(Clock.systemUTC()));
+                .format(getCurrentZonedDateTimeUniveralTimeCoordination());
     }
 
     /**
@@ -118,6 +118,14 @@ public final class TimingClass {
      */
     public static ZonedDateTime getCurrentZonedDateTime() {
         return ZonedDateTime.now(ZoneId.systemDefault());
+    }
+
+    /**
+     * Current local DateTime w. TZ as String
+     * @return String
+     */
+    public static ZonedDateTime getCurrentZonedDateTimeUniveralTimeCoordination() {
+        return ZonedDateTime.now(Clock.systemUTC());
     }
 
     /**
@@ -323,7 +331,7 @@ public final class TimingClass {
                 final AgingInfoRecord inAgeComponents,
                 final String strZeroValue,
                 final boolean bolFullWords) {
-            List<String> allUnits = List.of("y", "M", "w", "d", "h", "m", "s", "ml");
+            List<String> allUnits = List.of("y", "M", "w", "d", "h", "m", "s", "ms");
             if (bolFullWords) {
                 allUnits = List.of("year", "month", "week", "day", "hour", "minute", "second", "millisecond");
             }
@@ -582,7 +590,7 @@ public final class TimingClass {
          * @param inputFormat input Time Format as String
          * @return ZonedDateTime
          */
-        private static ZonedDateTime convertStringIntoZonedDateTime(
+        public static ZonedDateTime convertStringIntoZonedDateTime(
                 final String strTimeStamp,
                 final String inputFormat) {
             final LocalDateTime localTime = LocalDateTime.parse(strTimeStamp,
