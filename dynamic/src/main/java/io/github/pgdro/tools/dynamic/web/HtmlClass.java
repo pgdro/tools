@@ -198,7 +198,7 @@ public final class HtmlClass {
      */
     public static final class SelectInputSubClass {
         /** Variable for multiple value glue character */
-        /* default */ private static String multiValueGlue = ",";
+        /* default */ private static String multiValueGlue = "¦";
 
         /**
          * build Label as HTML tag
@@ -300,6 +300,13 @@ public final class HtmlClass {
         }
 
         /**
+         * Getter for multiValueGlue
+         */
+        public static String getMultiValueGlue() {
+            return multiValueGlue;
+        }
+
+        /**
          * Setter for multiValueGlue
          * @param inMultiValueGlue customized value for multiValueGlue
          */
@@ -321,7 +328,7 @@ public final class HtmlClass {
      */
     public static final class TableSubClass {
         /** CSS to align text to right */
-        private static final String CSS_TEXT_RIGHT_NW = "text-align:right;white-space:nowrap;";
+        private static final String CSS_TEXT_RIGHT_NW = "text-align:right;white-space:nowrap;font-family: sans-serif;";
         /** Minimum string length threshold for time-zone pattern replacement */
         private static final long LARGE_STRING = 20;
         /** Time Zone variable */
@@ -506,14 +513,14 @@ public final class HtmlClass {
                     final int strLength = strValue.length();
                     if (MAP_SPEC_VALS.containsKey(strValue)) {
                         cellStyle = MAP_SPEC_VALS.get(strValue).newStyle;
-                        strValue = MAP_SPEC_VALS.get(strValue).newValue;
+                        strValue  = MAP_SPEC_VALS.get(strValue).newValue;
                     } else {
                         final String tempValue = transformValueByPatternMatch(strValue);
                         if (tempValue != null) {
                             cellStyle = CSS_TEXT_RIGHT_NW;
-                            strValue = tempValue;
+                            strValue  = tempValue;
                         } else if (strLength >= LARGE_STRING) {
-                            strValue = RegularExpressionsClass.replacePatternsWithTimeZones(strValue);
+                            strValue  = RegularExpressionsClass.replacePatternsWithTimeZones(strValue);
                             cellStyle = strValue.equals(inValue.toString()) ? cellStyle : CSS_TEXT_RIGHT_NW;
                         }
                     }
