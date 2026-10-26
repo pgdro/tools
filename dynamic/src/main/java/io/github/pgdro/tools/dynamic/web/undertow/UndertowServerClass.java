@@ -1,11 +1,12 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
-package io.github.pgdro.tools.dynamic.web;
+package io.github.pgdro.tools.dynamic.web.undertow;
 
 import gg.jte.ContentType;
 import gg.jte.TemplateEngine;
 import gg.jte.resolve.ResourceCodeResolver;
 import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.LogExposureClass;
+import io.github.pgdro.tools.dynamic.web.html.TableClass;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.server.HttpHandler;
@@ -21,7 +22,7 @@ import org.jspecify.annotations.NonNull;
 /**
  * Undertow common class
  */
-public final class UndertowClass {
+public final class UndertowServerClass {
     /** Root handle variable */
     private static HttpHandler rootHandler;
     /** Web IP variable */
@@ -53,7 +54,7 @@ public final class UndertowClass {
         UndertowParametersClass.redirectPageIfNeeded(inExchange);
         final Object tzAttribute = UndertowSessionClass.getSession().getAttribute("TZ");
         final String timeZone = tzAttribute == null ? "UTC" : tzAttribute.toString();
-        HtmlClass.TableSubClass.setOutTimeZone(timeZone);
+        TableClass.setOutTimeZone(timeZone);
     }
 
     /**
@@ -129,7 +130,7 @@ public final class UndertowClass {
         webPort = inWebPort;
     }
 
-    private UndertowClass() {
+    private UndertowServerClass() {
         // intentionally blank
     }
 

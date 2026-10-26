@@ -18,7 +18,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import io.github.pgdro.tools.core.BasicStructuresClass;
+import io.github.pgdro.tools.core.StringingClass;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -111,7 +111,7 @@ final class TimingClassTests {
         final Path tempFile = Files.createTempFile("test-file-", ".txt");
         @SuppressWarnings("null")
         final String handled = TimingClass.LocalizationSubClass.FileSubSubClass.getFileLastModifiedTimeAsHumanReadableFormat(tempFile);
-        assertTrue(BasicStructuresClass.StringEvaluationSubClass.isStringActuallyLongTimestampWithMilliseconds(handled),
+        assertTrue(StringingClass.StringEvaluationSubClass.isStringActuallyLongTimestampWithMilliseconds(handled),
                 "Last Modified timestamp is not a long timestamp with milliseconds");
     }
 

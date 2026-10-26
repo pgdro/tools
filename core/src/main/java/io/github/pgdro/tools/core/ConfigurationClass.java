@@ -37,8 +37,6 @@ public final class ConfigurationClass {
     public static final String STR_DESCRIPTION = "Description";
     /** String for internal ETL */
     public static final String STR_DOT_THREE = "DotAndThreeDigitNumber";
-    /** String for internal Environment */
-    public static final String STR_ENV = "Environment";
     /** String for internal Environment Details */
     public static final String STR_ENV_DTLS = "EnvironmentDetails";
     /** Constant for error */

@@ -5,6 +5,7 @@ import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.ConfigurationClass;
 import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.RegularExpressionsClass;
+import io.github.pgdro.tools.core.StringingClass;
 import io.github.pgdro.tools.core.file.FileContentClass;
 import io.github.pgdro.tools.core.file.FileOperationsClass;
 import io.github.pgdro.tools.core.time.TimingClass;
@@ -180,8 +181,7 @@ public final class DatabaseOperationsClass {
         final List<String> mapParameterOrder = new ArrayList<>();
         final int intParameters = listMatches.size();
         for (final String listMatch : listMatches) {
-            final String crtParameter
-                    = BasicStructuresClass.StringCleaningSubClass.cleanStringFromCurlyBraces(listMatch);
+            final String crtParameter = StringingClass.StringCleaningSubClass.cleanStringFromCurlyBraces(listMatch);
             final int intPosition = valFields.indexOf(crtParameter);
             if (intPosition != -1) {
                 mapParameterOrder.add(crtParameter);
@@ -387,8 +387,9 @@ public final class DatabaseOperationsClass {
             } else {
                 final List<String> mapParameterOrder = getPromptParametersOrderWithinQuery(strQuery, objValues);
                 final int intParameters = mapParameterOrder.size();
-                final String strFinalQuery
-                        = BasicStructuresClass.StringConversionSubClass.convertPromptParametersIntoParameters(strQuery);
+                final String strFinalQuery = StringingClass
+                        .StringConversionSubClass
+                        .convertPromptParametersIntoParameters(strQuery);
                 try (PreparedStatement preparedStatement = objConnection.prepareStatement(strFinalQuery)) {
                     final Properties properties = new Properties();
                     // cycle through each row

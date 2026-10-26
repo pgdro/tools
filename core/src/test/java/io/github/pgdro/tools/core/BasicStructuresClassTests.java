@@ -89,7 +89,7 @@ class BasicStructuresClassTests {
     void testCountNamedParametersWithinQuery() {
         final String strHaystack = "SELECT {Field1} FROM table WHERE {Field 2} = {Value_to_filter};";
         final int intOriginal = 3;
-        final int handled = BasicStructuresClass.countNamedParametersWithinQuery(strHaystack);
+        final int handled = StringingClass.countNamedParametersWithinQuery(strHaystack);
         assertEquals(intOriginal, handled, String.format(ORIG_NQ_EXPCT, handled, intOriginal));
     }
 
@@ -98,7 +98,7 @@ class BasicStructuresClassTests {
     void testCountPositionalTypeParametersWithinQuery() {
         final String strHaystack = "SELECT %s FROM table WHERE %s = %d;";
         final int intOriginal = 3;
-        final int handled = BasicStructuresClass.countPositionalTypeParametersWithinQuery(strHaystack);
+        final int handled = StringingClass.countPositionalTypeParametersWithinQuery(strHaystack);
         assertEquals(intOriginal, handled, String.format(ORIG_NQ_EXPCT, handled, intOriginal));
     }
 
@@ -119,35 +119,35 @@ class BasicStructuresClassTests {
         @Test
         void testCleanStringAsDatabaseObject() {
             final String strOriginal = "Original1";
-            final String handled = BasicStructuresClass.StringCleaningSubClass.cleanStringAsDatabaseObject(strOriginal + "^");
+            final String handled = StringingClass.StringCleaningSubClass.cleanStringAsDatabaseObject(strOriginal + "^");
             assertEquals(strOriginal, handled, String.format(ORIG_NQ_EXPCT, handled, strOriginal));
         }
 
         @Test
         void testCleanStringFromCurlyBraces() {
             final String strOriginal = "Original2";
-            final String handled = BasicStructuresClass.StringCleaningSubClass.cleanStringFromCurlyBraces("{" + strOriginal + "}");
+            final String handled = StringingClass.StringCleaningSubClass.cleanStringFromCurlyBraces("{" + strOriginal + "}");
             assertEquals(strOriginal, handled, String.format(ORIG_NQ_EXPCT, handled, strOriginal));
         }
 
         @Test
         void testCleanStringFromUnwantedCharacters() {
             final String strOriginal = "Original3";
-            final String handled = BasicStructuresClass.StringCleaningSubClass.cleanStringFromUnwantedCharacters(strOriginal + "^");
+            final String handled = StringingClass.StringCleaningSubClass.cleanStringFromUnwantedCharacters(strOriginal + "^");
             assertEquals(strOriginal, handled, String.format(ORIG_NQ_EXPCT, handled, strOriginal));
         }
 
         @Test
         void testStripQuotes() {
             final String strOriginal = "Original4";
-            final String handled = BasicStructuresClass.StringCleaningSubClass.stripQuotes("\"" + strOriginal + "\"");
+            final String handled = StringingClass.StringCleaningSubClass.stripQuotes("\"" + strOriginal + "\"");
             assertEquals(strOriginal, handled, String.format(ORIG_NQ_EXPCT, handled, strOriginal));
         }
 
         @Test
         void testStripQuotesShort() {
             final String strOriginal = "O";
-            final String handled = BasicStructuresClass.StringCleaningSubClass.stripQuotes("\"");
+            final String handled = StringingClass.StringCleaningSubClass.stripQuotes("\"");
             assertNotEquals(strOriginal, handled, String.format(ORIG_NQ_EXPCT, handled, strOriginal));
         }
 
@@ -172,7 +172,7 @@ class BasicStructuresClassTests {
             final List<String> listStrings = new ArrayList<>();
             listStrings.add(STR_FIRST);
             listStrings.add("Second");
-            final boolean handled = BasicStructuresClass.StringEvaluationSubClass.hasMatchingSubstring(STR_FIRST, listStrings);
+            final boolean handled = StringingClass.StringEvaluationSubClass.hasMatchingSubstring(STR_FIRST, listStrings);
             assertTrue(handled, String.format("\"%s\" is not true as expected", handled));
         }
 
@@ -196,7 +196,7 @@ class BasicStructuresClassTests {
         void testConvertPromptParametersIntoNamedParameters() {
             final String strOriginal = "SELECT {Field A}";
             final String strExpected = "SELECT :Field_A";
-            final String handled = BasicStructuresClass.StringConversionSubClass.convertPromptParametersIntoNamedParameters(strOriginal);
+            final String handled = StringingClass.StringConversionSubClass.convertPromptParametersIntoNamedParameters(strOriginal);
             assertEquals(strExpected, handled, String.format(ORIG_NQ_EXPCT, handled, strExpected));
         }
 
@@ -204,7 +204,7 @@ class BasicStructuresClassTests {
         void testConvertPromptParametersIntoParameters() {
             final String strOriginal = "SELECT {Field A}";
             final String strExpected = "SELECT ?";
-            final String handled = BasicStructuresClass.StringConversionSubClass.convertPromptParametersIntoParameters(strOriginal);
+            final String handled = StringingClass.StringConversionSubClass.convertPromptParametersIntoParameters(strOriginal);
             assertEquals(strExpected, handled, String.format(ORIG_NQ_EXPCT, handled, strExpected));
         }
 
@@ -349,37 +349,37 @@ class BasicStructuresClassTests {
         @DisplayName("Compute string signature produces consistent output")
         void computeStringSignatureProducesConsistentOutput() {
             final String input = "test_input";
-            final String first = BasicStructuresClass.StringTransformationSubClass.computeStringSignature(input);
-            final String second = BasicStructuresClass.StringTransformationSubClass.computeStringSignature(input);
+            final String first = StringingClass.StringTransformationSubClass.computeStringSignature(input);
+            final String second = StringingClass.StringTransformationSubClass.computeStringSignature(input);
             assertEquals(first, second, "Same input should produce same signature");
         }
 
         @Test
         @DisplayName("Compute string signature produces different output for different inputs")
         void computeStringSignatureProducesDifferentOutputForDifferentInputs() {
-            final String sig1 = BasicStructuresClass.StringTransformationSubClass.computeStringSignature("input1");
-            final String sig2 = BasicStructuresClass.StringTransformationSubClass.computeStringSignature("input2");
+            final String sig1 = StringingClass.StringTransformationSubClass.computeStringSignature("input1");
+            final String sig2 = StringingClass.StringTransformationSubClass.computeStringSignature("input2");
             assertNotEquals(sig1, sig2, "Different inputs should produce different signatures");
         }
 
         @Test
         @DisplayName("Compute string signature produces non-empty output")
         void computeStringSignatureProducesNonEmptyOutput() {
-            final String signature = BasicStructuresClass.StringTransformationSubClass.computeStringSignature("test");
+            final String signature = StringingClass.StringTransformationSubClass.computeStringSignature("test");
             assertFalse(signature.isEmpty(), "Signature should not be empty");
         }
 
         @Test
         @DisplayName("Enclose string if contains space adds quotes when space present")
         void encloseStringIfContainsSpaceAddsQuotesWhenSpacePresent() {
-            final String result = BasicStructuresClass.StringTransformationSubClass.encloseStringIfContainsSpace("hello world", '"');
+            final String result = StringingClass.StringTransformationSubClass.encloseStringIfContainsSpace("hello world", '"');
             assertEquals("\"hello world\"", result, String.format(ORIG_NQ_EXPCT, result, "\"hello world\""));
         }
 
         @Test
         @DisplayName("Enclose string if contains space leaves unchanged when no space")
         void encloseStringIfContainsSpaceLeaveUnchangedWhenNoSpace() {
-            final String result = BasicStructuresClass.StringTransformationSubClass.encloseStringIfContainsSpace("helloworld", '"');
+            final String result = StringingClass.StringTransformationSubClass.encloseStringIfContainsSpace("helloworld", '"');
             assertEquals("helloworld", result, String.format(ORIG_NQ_EXPCT, result, "helloworld"));
         }
 
@@ -387,14 +387,14 @@ class BasicStructuresClassTests {
         void testEncloseStringIfContainsSpace() {
             final String strOriginal = "Original String";
             final String strExpected = "\"Original String\"";
-            final String handled = BasicStructuresClass.StringTransformationSubClass.encloseStringIfContainsSpace(strOriginal, '\"');
+            final String handled = StringingClass.StringTransformationSubClass.encloseStringIfContainsSpace(strOriginal, '\"');
             assertEquals(strExpected, handled, String.format(ORIG_NQ_EXPCT, handled, strExpected));
         }
 
         @Test
         void testEncloseStringIfContainsSpaceFutile() {
             final String strExpected = "\"Original String\"";
-            final String handled = BasicStructuresClass.StringTransformationSubClass.encloseStringIfContainsSpace(strExpected, '\"');
+            final String handled = StringingClass.StringTransformationSubClass.encloseStringIfContainsSpace(strExpected, '\"');
             assertEquals(strExpected, handled, String.format(ORIG_NQ_EXPCT, handled, strExpected));
         }
 
@@ -402,7 +402,7 @@ class BasicStructuresClassTests {
         void testEncloseStringIfContainsSpacePartialEnd() {
             final String strOriginal = "\"Original String";
             final String strExpected = strOriginal + '"';
-            final String handled = BasicStructuresClass.StringTransformationSubClass.encloseStringIfContainsSpace(strOriginal, '\"');
+            final String handled = StringingClass.StringTransformationSubClass.encloseStringIfContainsSpace(strOriginal, '\"');
             assertEquals(strExpected, handled, String.format(ORIG_NQ_EXPCT, handled, strExpected));
         }
 
@@ -410,7 +410,7 @@ class BasicStructuresClassTests {
         void testEncloseStringIfContainsSpacePartialStart() {
             final String strOriginal = "Original String\"";
             final String strExpected = '"' + strOriginal;
-            final String handled = BasicStructuresClass.StringTransformationSubClass.encloseStringIfContainsSpace(strOriginal, '\"');
+            final String handled = StringingClass.StringTransformationSubClass.encloseStringIfContainsSpace(strOriginal, '\"');
             assertEquals(strExpected, handled, String.format(ORIG_NQ_EXPCT, handled, strExpected));
         }
 
@@ -422,7 +422,7 @@ class BasicStructuresClassTests {
             final Properties expectedProps = new Properties();
             expectedProps.put("key", "value");
             expectedProps.put("password", "*U*N*D*I*S*C*L*O*S*E*D*");
-            final Properties handled = BasicStructuresClass.StringTransformationSubClass.obfuscateProperties(originalProps);
+            final Properties handled = StringingClass.StringTransformationSubClass.obfuscateProperties(originalProps);
             assertEquals(expectedProps, handled, String.format(ORIG_NQ_EXPCT, handled, expectedProps));
         }
 

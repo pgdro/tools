@@ -1,0 +1,275 @@
+.appCopyright {
+    bottom: 0;
+}
+
+.appDetails {
+    bottom: 0.55rem;
+}
+
+.appCopyright, .appDetails {
+    font-size: 0.5rem;
+    position: fixed;
+    right: 0.25rem;
+}
+
+.blueShaddowBorderLeft {
+    box-shadow: 0px 0px 3px 3px blue;
+    padding: 2px;
+}
+
+.closebtn, .openbtn {
+    font-size: 3rem;
+    left: 0.5rem;
+    padding: 0;
+    position: fixed;
+    top: 0.5rem;
+}
+
+.closebtn {
+    visibility: hidden;
+    transition: 0.3s;
+    transition-property: sliding-horizontally;
+}
+
+.importantText {
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #999;
+}
+
+.infoContextClass {
+    border: 1px blue dotted;
+    border-radius: 0px 10px;
+    font-size: 0.8rem;
+    position: fixed;
+    right: 0.5rem;
+    top: 1rem;
+    width: 20rem;
+    z-index: 990;
+}
+
+.nowClass {
+    font-size: 0.5rem;
+    position: fixed;
+    right: 0.2rem;
+    top: 0.2rem;
+}
+
+.openbtn {
+    visibility: visible;
+    transition: 0.3s;
+    transition-property: sliding-vertically;
+}
+
+.portNoClass {
+    font-size: 0.7rem;
+    left: 0.2rem;
+    position: fixed;
+    top: 0.2rem;
+}
+
+.sidebar {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 0;
+    z-index: 1;
+    overflow-x: hidden;
+}
+
+.sidebar a {
+    display: block;
+}
+
+.timeZoneFormClass {
+    float: left;
+    font-size: 0.8rem;
+    margin: 0 0.5rem;
+}
+
+a, a:hover, a:link, a:visited {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: MediumBlue;
+    text-shadow: 1px 1px 2px #999;
+}
+
+body {
+    background-color: White;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    bottom: 0;
+    font-size: 0.7rem;
+    height: auto;
+    left: 0;
+    padding-right: 0.5rem;
+    position: fixed;
+    text-align: right;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 2px 2px 4px #999;
+}
+
+header {
+    margin-left: 0;
+    padding-top: 0.5rem;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    z-index: 900;
+}
+
+html {
+    height: 100%;
+}
+
+input[type=button], input[type=submit] {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 20px #eee;
+    color: white;
+    outline: none;
+    text-align: center;
+    transition: 1s;
+    transition-property: sliding-horizontally;
+}
+
+input[type=button] {
+    background: linear-gradient(90deg, SandyBrown, Wheat);
+    margin: 0.2rem;
+    padding: 0.2rem 0.4rem;
+}
+
+input[type=submit] {
+    background: linear-gradient(90deg, Blue, DeepSkyBlue);
+    background-size: 200% auto;
+    display: block;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+}
+
+input[type=button]:hover, input[type=submit]:hover {
+    background-position: right center;
+    color: White;
+    text-shadow: 1px 1px 2px #999;
+}
+
+main {
+    padding: 4rem 1rem 1rem 0.5rem;
+}
+
+nav {
+    height: 100%;
+    left: 0;
+    margin: 0;
+    overflow-x: hidden;
+    position: fixed;
+    top: 4rem;
+    width: 0;
+    z-index: 800;
+    transition: 0.5s;
+    transition-property: sliding-horizontally;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 5rem 0.5rem 1rem 0.5rem;
+}
+
+nav ul li {
+    line-height: 1.5rem;
+}
+
+nav ul li a {
+    padding: 0;
+    transition: 0.3s;
+    transition-property: sliding-vertically;
+}
+
+nav ul li a svg {
+    margin-right: 0.5rem;
+}
+
+table {
+    border: 1px solid White;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    empty-cells: show;
+}
+
+table thead tr th {
+    width: auto;
+}
+
+table tr {
+    border-bottom: 1px dotted #ccc;
+}
+
+table tr:hover {
+    background: #FFFF73 !important;
+}
+
+table tr:nth-child(even) {
+    background-color: White;
+    background-size: 100%;
+    background-image: linear-gradient(to bottom, White 0%, #f1f1f1 50%, #e1e1e1 51%, #f6f6f6 100%);
+}
+
+table tr:nth-child(odd) {
+    background-color: White;
+    background-size: 100%;
+    background-image: linear-gradient(to bottom, White 0%, #f3f3f3 50%, #ededed 51%, White 100%);
+}
+
+table tr th {
+    background-color: Silver;
+    background-size: 100%;
+    background-image: linear-gradient(to bottom, Silver 0%, White 100%);
+    border: 1px inset White;
+    box-shadow: none;
+    color: #333;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px White;
+}
+
+table tr th:hover {
+    background-color: Yellow;
+    background-size: 100%;
+    background-image: linear-gradient(to bottom, Yellow 0%, White 100%);
+}
+
+table tr td {
+    padding-left: 2px;
+    padding-right: 2px;
+    vertical-align: top;
+}
+
+table tr td:hover {
+    background-color: PeachPuff;
+    background-size: 100%;
+    background-image: radial-gradient(ellipse at center, PeachPuff 0%, Yellow 100%);
+    color: Black;
+}
+
+th, td {
+    border-bottom-style: dotted;
+    border-bottom-width: 1px;
+}
+
+thead tr th {
+    position: sticky;
+    top: 4rem;
+}

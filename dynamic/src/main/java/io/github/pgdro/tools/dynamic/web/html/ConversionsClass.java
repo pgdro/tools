@@ -1,8 +1,9 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
-package io.github.pgdro.tools.dynamic.web;
+package io.github.pgdro.tools.dynamic.web.html;
 
 import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.ConfigurationClass;
+import io.github.pgdro.tools.core.StringingClass;
 import io.github.pgdro.tools.core.time.TimingClass;
 import java.util.Locale;
 import java.util.Map;
@@ -38,7 +39,7 @@ public final class ConversionsClass {
      * @return converted String
      */
     private String convertDecimalWithThousandDecimalSeparator(final String inputString) {
-        return BasicStructuresClass
+        return StringingClass
                 .StringTransformationSubClass
                 .formatStringWithDecimalContentWithThousandDecimalSeparator(inputString);
     }

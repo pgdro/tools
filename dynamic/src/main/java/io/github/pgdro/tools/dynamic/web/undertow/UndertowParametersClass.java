@@ -1,5 +1,5 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
-package io.github.pgdro.tools.dynamic.web;
+package io.github.pgdro.tools.dynamic.web.undertow;
 
 import io.github.pgdro.tools.core.RegularExpressionsClass;
 import io.undertow.server.HttpServerExchange;

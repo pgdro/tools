@@ -3,6 +3,7 @@ package io.github.pgdro.tools.dynamic.database;
 
 import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.LogExposureClass;
+import io.github.pgdro.tools.core.StringingClass;
 import io.github.pgdro.tools.dynamic.database.DatabaseOperationsClass.ConnectivitySubClass;
 import io.github.pgdro.tools.dynamic.database.DatabaseOperationsClass.ResultSettingSubClass;
 import java.sql.Connection;
@@ -48,7 +49,7 @@ public final class DatabaseSpecificMySqlClass {
                         STR_DB_MYSQL,
                         strDatabase,
                         strConnection,
-                        BasicStructuresClass.StringTransformationSubClass.obfuscateProperties(propConnection));
+                        StringingClass.StringTransformationSubClass.obfuscateProperties(propConnection));
                 LogExposureClass.LOGGER.debug(strFeedback);
                 connection = DriverManager.getConnection(strConnection, propConnection);
                 final String strFeedbackOk = String.format(

@@ -137,10 +137,10 @@ public final class ProjectClass {
         String finalValue = rawValue;
         if (rawValue == null || rawValue.isBlank()) {
             finalValue = "";
-        } else if (BasicStructuresClass.StringEvaluationSubClass.isStringOneVariable(rawValue)) {
+        } else if (StringingClass.StringEvaluationSubClass.isStringOneVariable(rawValue)) {
             try {
                 finalValue = prjInterpolator.interpolate(rawValue);
-                if (BasicStructuresClass.StringEvaluationSubClass.isStringOneVariable(finalValue)) {
+                if (StringingClass.StringEvaluationSubClass.isStringOneVariable(finalValue)) {
                     finalValue = prjParentInterpol.interpolate(finalValue);
                 }
             } catch (InterpolationException e) {
@@ -190,7 +190,7 @@ public final class ProjectClass {
                     "As initial version was NULL I re-picked version from parent and is %s", projectVersion);
             LogExposureClass.LOGGER.debug(strFeedback2);
         }
-        if (BasicStructuresClass.StringEvaluationSubClass.isStringOneVariable(projectVersion)) {
+        if (StringingClass.StringEvaluationSubClass.isStringOneVariable(projectVersion)) {
             projectVersion = getProjectModelValueWithInterpolationIfNeeded(projectVersion);
             final String strFeedback3 = String.format("Final interpolated version is %s", projectVersion);
             LogExposureClass.LOGGER.debug(strFeedback3);

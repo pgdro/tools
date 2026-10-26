@@ -18,6 +18,10 @@ import org.junit.jupiter.api.Test;
 import io.github.pgdro.tools.core.ConfigurationClass;
 import io.github.pgdro.tools.core.ProjectClass;
 import io.github.pgdro.tools.core.time.TimingClass;
+import io.github.pgdro.tools.dynamic.web.html.FileInfoClass;
+import io.github.pgdro.tools.dynamic.web.html.HtmlClass;
+import io.github.pgdro.tools.dynamic.web.html.SelectInputClass;
+import io.github.pgdro.tools.dynamic.web.html.TableClass;
 
 /**
  * HtmlClass tests
@@ -77,7 +81,7 @@ class HtmlClassTests {
         props.put("Id", "TZ");
         props.put(ConfigurationClass.STR_DEFAULT, "tz1");
         props.put(ConfigurationClass.STR_SIZE, "1");
-        final String html = HtmlClass.SelectInputSubClass.buildSelectInput(mapValues, props);
+        final String html = SelectInputClass.buildSelectInput(mapValues, props);
         assertAll("Select HTML correctness",
                 () -> assertTrue(html.contains("<label for=\"TZ"), "Label should exist point to actual select id"),
                 () -> assertTrue(html.contains("<select"), "HTML should contain select tag"),
@@ -92,7 +96,7 @@ class HtmlClassTests {
     void buildFileInfoBox() throws IOException {
         final Path tempFile = Files.createTempFile("fileops-test-file-", ".txt");
         try {
-            final String myInfoBox = HtmlClass.FileInfoSubClass.gatherFileStatistics(tempFile);
+            final String myInfoBox = FileInfoClass.gatherFileStatistics(tempFile);
             assertAll("Select HTML correctness",
                     () -> assertTrue(myInfoBox.startsWith("File is"), "HTML should start with"),
                     () -> assertTrue(myInfoBox.contains(", last modified time-stamp on"), "HTML contains specific sequence text pieces")
@@ -155,7 +159,7 @@ class HtmlClassTests {
         final Properties features = new Properties();
         features.put(ConfigurationClass.STR_NEW_TAB, ConfigurationClass.STR_CATEGORY);
         features.put(ConfigurationClass.STR_COUNTER, "#");
-        final String html = HtmlClass.TableSubClass.getListOfSequencedMapIntoHtmlTable(records, features);
+        final String html = TableClass.getListOfSequencedMapIntoHtmlTable(records, features);
         assertAll("HTML table with tabs and counter",
                 () -> assertTrue(html.contains("<table"), "Output should contain table markup"),
                 () -> assertTrue(html.contains("<tr>"), "Output should contain table rows"),

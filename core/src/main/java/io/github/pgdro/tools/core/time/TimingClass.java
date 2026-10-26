@@ -5,6 +5,8 @@ import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.ConfigurationClass;
 import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.RegularExpressionsClass;
+import io.github.pgdro.tools.core.StringingClass;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
@@ -527,15 +529,15 @@ public final class TimingClass {
             String outDate = "";
             try {
                 ZonedDateTime zonedDateTime = null;
-                if (BasicStructuresClass.StringEvaluationSubClass.isStringActuallyTimestampWithMilliseconds(inDate)) {
+                if (StringingClass.StringEvaluationSubClass.isStringActuallyTimestampWithMilliseconds(inDate)) {
                     zonedDateTime = LocalDateTime.parse(inDate, inTimeFormat).atZone(ZoneId.of(inputTimeZone));
-                } else if (BasicStructuresClass.StringEvaluationSubClass.isStringActuallyTimestamp(inDate)) {
+                } else if (StringingClass.StringEvaluationSubClass.isStringActuallyTimestamp(inDate)) {
                     zonedDateTime = LocalDateTime.parse(inDate, inTimeFormat).atZone(ZoneId.of(inputTimeZone));
-                } else if (BasicStructuresClass
+                } else if (StringingClass
                         .StringEvaluationSubClass
                         .isStringActuallyDateWithHourAndMinutes(inDate)) {
                     zonedDateTime = LocalDateTime.parse(inDate, inTimeFormat).atZone(ZoneId.of(inputTimeZone));
-                } else if (BasicStructuresClass.StringEvaluationSubClass.isStringActuallyDate(inDate)) {
+                } else if (StringingClass.StringEvaluationSubClass.isStringActuallyDate(inDate)) {
                     zonedDateTime = LocalDate.parse(inDate, inTimeFormat).atStartOfDay(ZoneId.of(inputTimeZone));
                 }
                 if (zonedDateTime == null) {
