@@ -131,7 +131,7 @@ public final class SelectInputClass {
                 strReturn = sessionValues.toString();
             }
         }
-        return strReturn.isBlank() ? defaultValue : strReturn;
+        return strReturn.isBlank() ? defaultValue : strReturn.replaceAll("[\\[\\]]", "");
     }
 
     /**

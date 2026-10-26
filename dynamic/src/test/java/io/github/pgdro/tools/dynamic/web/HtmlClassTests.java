@@ -40,7 +40,7 @@ class HtmlClassTests {
     void buildApplicationCopyright() {
         ProjectClass.setPomFile("/tools-core-pom.xml");
         final String appCopyright = HtmlClass.buildApplicationCopyright();
-        assertTrue(appCopyright.contains("&copy; by "), "Application copyright should have Copyright symbol followed by single space and \"by\" word");
+        assertTrue(appCopyright.contains("© by "), "Application copyright should have Copyright symbol followed by single space and \"by\" word");
     }
 
     @Test
@@ -48,7 +48,7 @@ class HtmlClassTests {
     void buildApplicationDetail() {
         ProjectClass.setPomFile("/tools-core-pom.xml");
         final String appDetail = HtmlClass.buildApplicationDetail();
-        assertTrue(appDetail.contains("&trade; v."), "Application detail should have TradeMark symbol followed by single space, small letter v and dot");
+        assertTrue(appDetail.contains("™ v."), "Application detail should have TradeMark symbol followed by single space, small letter v and dot");
     }
 
     @Test

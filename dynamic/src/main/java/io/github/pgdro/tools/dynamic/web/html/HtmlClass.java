@@ -20,7 +20,7 @@ public final class HtmlClass {
      */
     public static @NonNull String buildApplicationCopyright() {
         final String prjFirstDeveloper = ProjectClass.getFirstDeveloper();
-        return "&copy; by " + prjFirstDeveloper;
+        return "© by " + prjFirstDeveloper;
     }
 
     /**
@@ -29,7 +29,7 @@ public final class HtmlClass {
      */
     public static @NonNull String buildApplicationDetail() {
         final String prjVersion = ProjectClass.getProjectVersion();
-        return ProjectClass.getProjectName() + "&trade; v." + prjVersion;
+        return ProjectClass.getProjectName() + "™ v." + prjVersion;
     }
 
     /**
