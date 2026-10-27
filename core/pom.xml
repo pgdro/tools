@@ -50,10 +50,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>flatten-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <groupId>io.takari.maven.plugins</groupId>
                 <artifactId>takari-lifecycle-plugin</artifactId>
             </plugin>
@@ -72,7 +68,8 @@
                                 <mkdir dir="${project.basedir}/src/main/resources/time_zones" />
                                 <get src="https://data.iana.org/time-zones/data/zone1970.tab"
                                      dest="${project.basedir}/src/main/resources/time_zones/zone1970.tab"
-                                     skipexisting="true" />
+                                     verbose="true"
+                                     usetimestamp="true" />
                             </target>
                         </configuration>
                     </execution>
