@@ -66,10 +66,12 @@
                         <configuration>
                             <target>
                                 <mkdir dir="${project.basedir}/src/main/resources/time_zones" />
+                                <!-- https://ant.apache.org/manual/Tasks/get.html -->
                                 <get src="https://data.iana.org/time-zones/data/zone1970.tab"
                                      dest="${project.basedir}/src/main/resources/time_zones/zone1970.tab"
                                      verbose="true"
-                                     usetimestamp="true" />
+                                     usetimestamp="true"
+                                     ignoreerrors="true" />
                             </target>
                         </configuration>
                     </execution>
