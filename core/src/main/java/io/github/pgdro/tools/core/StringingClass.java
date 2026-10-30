@@ -399,7 +399,7 @@ public final class StringingClass {
             final Properties outProps = new Properties();
             final String strKeyToObfuscate = "password";
             inProps.forEach((strKey, strValue) -> {
-                if (strKey.equals(strKeyToObfuscate)) {
+                if (strKeyToObfuscate.equals(strKey)) {
                     outProps.put(strKey, "*U*N*D*I*S*C*L*O*S*E*D*");
                 } else {
                     outProps.put(strKey, strValue);
