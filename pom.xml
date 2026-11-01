@@ -78,12 +78,12 @@
         <maven-antrun-plugin.version>3.2.0</maven-antrun-plugin.version>
         <maven-check-license.version>1.5.0</maven-check-license.version>
         <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
-        <maven-enforcer-plugin.version>3.6.3</maven-enforcer-plugin.version>
+        <maven-enforcer-plugin.version>3.7.0</maven-enforcer-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>3.12.0</maven-javadoc-plugin.version>
         <maven-pmd-plugin.version>3.28.0</maven-pmd-plugin.version>
         <maven-surefire-plugin.version>3.6.1</maven-surefire-plugin.version>
-        <open-java-format.version>2.98.0.6</open-java-format.version>
+        <open-java-format.version>21.0.1</open-java-format.version>
         <pmd.version>7.29.0</pmd.version>
         <takari-lifecycle-plugin.version>2.3.4</takari-lifecycle-plugin.version>
         <versions-maven-plugin.version>2.23.0</versions-maven-plugin.version>
