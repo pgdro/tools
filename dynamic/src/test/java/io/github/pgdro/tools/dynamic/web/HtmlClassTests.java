@@ -2,6 +2,13 @@ package io.github.pgdro.tools.dynamic.web;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import io.github.pgdro.tools.core.ConfigurationClass;
+import io.github.pgdro.tools.core.ProjectClass;
+import io.github.pgdro.tools.core.time.TimingClass;
+import io.github.pgdro.tools.dynamic.web.html.FileInfoClass;
+import io.github.pgdro.tools.dynamic.web.html.HtmlClass;
+import io.github.pgdro.tools.dynamic.web.html.SelectInputClass;
+import io.github.pgdro.tools.dynamic.web.html.TableClass;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,17 +18,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.SequencedMap;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import io.github.pgdro.tools.core.ConfigurationClass;
-import io.github.pgdro.tools.core.ProjectClass;
-import io.github.pgdro.tools.core.time.TimingClass;
-import io.github.pgdro.tools.dynamic.web.html.FileInfoClass;
-import io.github.pgdro.tools.dynamic.web.html.HtmlClass;
-import io.github.pgdro.tools.dynamic.web.html.SelectInputClass;
-import io.github.pgdro.tools.dynamic.web.html.TableClass;
 
 /**
  * HtmlClass tests
