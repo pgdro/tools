@@ -476,7 +476,7 @@
                     </configuration>
                 </plugin>
                 <!-- Source: https://github.com/apache/maven-enforcer/tree/enforcer-3.6.3/maven-enforcer-plugin -->
-                <!-- Binaries: https://repo1.maven.org/maven2/org/codehaus/mojo/versions-maven-plugin -->
+                <!-- Binaries: https://repo1.maven.org/maven2/org/apache/maven/plugins/maven-enforcer-plugin -->
                 <!-- Description: The Loving Iron Fist of Maven -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
