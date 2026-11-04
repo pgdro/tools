@@ -49,7 +49,7 @@
     </modules>
 
     <properties>
-        <revision>2.3.0</revision>
+        <revision>2.3.1</revision>
         <!-- File encoding properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -61,7 +61,7 @@
         <sonar.organization>pgdro</sonar.organization>
         <!-- Dependency versions -->
         <jackson.version>3.2.4</jackson.version>
-        <json-schema-validator.version>3.0.8</json-schema-validator.version>
+        <json-schema-validator.version>3.0.9</json-schema-validator.version>
         <jspecify.version>1.0.1</jspecify.version>
         <jte.version>3.2.5</jte.version>
         <junit-jupiter.version>6.1.3</junit-jupiter.version>
