@@ -17,7 +17,7 @@ import org.jspecify.annotations.NonNull;
  */
 public final class TableClass {
     /** CSS to align text to right */
-    private static final String CSS_TEXT_RIGHT_NW = "text-align:right;white-space:nowrap;font-family: sans-serif;";
+    /* default */ private static String cssTextRightNw = "text-align:right;white-space:nowrap;font-family:sans-serif;";
     /** Minimum string length threshold for time-zone pattern replacement */
     private static final long LARGE_STRING = 20;
     /** Time Zone variable */
@@ -106,6 +106,14 @@ public final class TableClass {
     public static void setOutTimeZone(final String outTimeZone) {
         strOutTimeZone = outTimeZone;
         TimingClass.LocalizationSubClass.setOutputTimeZone(outTimeZone);
+    }
+
+    /**
+     * Setter for cssTextRightNw
+     * @param inStyle new style
+     */
+    public static void setReplacedPatternsStyle(final String inStyle) {
+        cssTextRightNw = inStyle;
     }
 
     /**
@@ -335,11 +343,11 @@ public final class TableClass {
                 } else {
                     final String tempValue = transformValueByPatternMatch(strValue);
                     if (tempValue != null) {
-                        cellStyle = CSS_TEXT_RIGHT_NW;
+                        cellStyle = cssTextRightNw;
                         strValue  = tempValue;
                     } else if (strLength >= LARGE_STRING) {
                         strValue  = RegularExpressionsClass.replacePatternsWithTimeZones(strValue);
-                        cellStyle = strValue.equals(inValue.toString()) ? cellStyle : CSS_TEXT_RIGHT_NW;
+                        cellStyle = strValue.equals(inValue.toString()) ? cellStyle : cssTextRightNw;
                     }
                 }
                 return Map.of(ConfigurationClass.STR_STYLE, cellStyle, "value", strValue);
