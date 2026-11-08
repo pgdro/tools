@@ -1,4 +1,4 @@
-package io.github.pgdro.utilities.cli;
+package io.github.pgdro.utilities.cli.commands;
 
 import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.InteractiveInputClass;
@@ -14,7 +14,7 @@ import picocli.CommandLine.Mixin;
  */
 @CommandLine.Command(name = "AnalyzeColumnsFromCsvFiles",
                      description = "Analyze columns from CSV file")
-class AnalyzeColumnsFromCsvFiles implements Runnable {
+public class AnalyzeColumnsFromCsvFiles implements Runnable {
     /**
      * adds the options defined in
      * InteractiveInputClass.FileNameOptionMixinClass to this command

@@ -1,4 +1,4 @@
-package io.github.pgdro.utilities.cli;
+package io.github.pgdro.utilities.cli.commands;
 
 import io.github.pgdro.tools.core.InteractiveInputClass;
 import io.github.pgdro.tools.core.file.FileContentClass;
@@ -11,7 +11,7 @@ import picocli.CommandLine.Mixin;
  */
 @CommandLine.Command(name = "CaptureImportsFromJavaSourceFilesIntoCsvFile",
                      description = "Get import inventory from all Java source files within a given folder")
-class CaptureImportsFromJavaSourceFilesIntoCsvFile implements Runnable {
+public class CaptureImportsFromJavaSourceFilesIntoCsvFile implements Runnable {
 
     /**
      * adds the options defined in

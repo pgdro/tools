@@ -1,4 +1,4 @@
-package io.github.pgdro.utilities.cli;
+package io.github.pgdro.utilities.cli.commands;
 
 import io.github.pgdro.tools.core.ConfigurationClass;
 import io.github.pgdro.tools.core.InteractiveInputClass;
@@ -13,7 +13,7 @@ import picocli.CommandLine.Mixin;
  */
 @CommandLine.Command(name = "CleanOlderFilesFromFolder",
                      description = "Clean files older than a given number of days")
-class CleanOlderFilesFromFolder implements Runnable {
+public class CleanOlderFilesFromFolder implements Runnable {
 
     /**
      * adds the options defined in

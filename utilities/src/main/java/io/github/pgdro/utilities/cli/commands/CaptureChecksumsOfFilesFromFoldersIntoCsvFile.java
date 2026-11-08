@@ -1,4 +1,4 @@
-package io.github.pgdro.utilities.cli;
+package io.github.pgdro.utilities.cli.commands;
 
 import io.github.pgdro.tools.core.InteractiveInputClass;
 import io.github.pgdro.tools.core.LogExposureClass;
@@ -15,7 +15,7 @@ import picocli.CommandLine.Mixin;
  */
 @CommandLine.Command(name = "CaptureChecksumsOfFilesFromFolderIntoCsvFile",
                      description = "Get statistics for all files within a given folder")
-class CaptureChecksumsOfFilesFromFoldersIntoCsvFile implements Runnable {
+public class CaptureChecksumsOfFilesFromFoldersIntoCsvFile implements Runnable {
 
     /**
      * adds the options defined in

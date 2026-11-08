@@ -2,6 +2,14 @@
 package io.github.pgdro.utilities.cli;
 
 import io.github.pgdro.tools.core.InteractiveInputClass;
+import io.github.pgdro.utilities.cli.commands.AnalyzeColumnsFromCsvFiles;
+import io.github.pgdro.utilities.cli.commands.AnalyzePomFiles;
+import io.github.pgdro.utilities.cli.commands.ArchiveFolders;
+import io.github.pgdro.utilities.cli.commands.CaptureChecksumsOfFilesFromFoldersIntoCsvFile;
+import io.github.pgdro.utilities.cli.commands.CaptureImportsFromJavaSourceFilesIntoCsvFile;
+import io.github.pgdro.utilities.cli.commands.CaptureWindowsApplicationsInstalledIntoCsvFile;
+import io.github.pgdro.utilities.cli.commands.CleanOlderFilesFromFolder;
+import io.github.pgdro.utilities.cli.commands.GetSubFoldersFromFolders;
 import picocli.CommandLine;
 
 /**

@@ -69,12 +69,15 @@
         <maven-model.version>3.10.0</maven-model.version>
         <picocli.version>4.7.7</picocli.version>
         <plexus-interpolation.version>1.30.0</plexus-interpolation.version>
+        <plexus-utils.version>4.1.0</plexus-utils.version>
+        <plexus-xml.version>4.2.0</plexus-xml.version>
+        <slf4j.version>2.0.20</slf4j.version>
         <sqlite-jdbc.version>3.54.1.0</sqlite-jdbc.version>
         <undertow-core.version>2.4.4.Final</undertow-core.version>
         <!-- Build Plugin versions -->
         <central-publishing-maven-plugin.version>0.12.0</central-publishing-maven-plugin.version>
         <depgraph-maven-plugin.version>4.0.6</depgraph-maven-plugin.version>
-        <flatten-maven-plugin.version>1.8.0</flatten-maven-plugin.version>
+        <flatten-maven-plugin.version>1.9.0</flatten-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.16</jacoco-maven-plugin.version>
         <maven-antrun-plugin.version>3.2.0</maven-antrun-plugin.version>
         <maven-check-license.version>1.5.0</maven-check-license.version>
@@ -87,8 +90,8 @@
         <maven-surefire-plugin.version>3.6.1</maven-surefire-plugin.version>
         <open-java-format.version>21.0.1</open-java-format.version>
         <pmd.version>7.29.0</pmd.version>
-        <takari-lifecycle-plugin.version>2.3.4</takari-lifecycle-plugin.version>
-        <versions-maven-plugin.version>2.23.0</versions-maven-plugin.version>
+        <takari-lifecycle-plugin.version>2.4.0</takari-lifecycle-plugin.version>
+        <versions-maven-plugin.version>2.24.0</versions-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -117,6 +120,15 @@
                 <version>${jte.version}</version>
                 <scope>compile</scope>
             </dependency>
+            <!-- Source: https://jte.gg/ -->
+            <!-- Binaries: https://repo1.maven.org/maven2/gg/jte/jte-runtime -->
+            <!-- Description: Runtime for Java Template Engine -->
+            <dependency>
+                <groupId>gg.jte</groupId>
+                <artifactId>jte-runtime</artifactId>
+                <version>${jte.version}</version>
+                <scope>compile</scope>
+            </dependency>
             <!-- Source: https://picocli.info/ -->
             <!-- Binaries: https://repo1.maven.org/maven2/info/picocli/picocli -->
             <!-- Description: Java command line parser with both an annotations API and a programmatic API. Usage help with ANSI styles and colors. Autocomplete. Nested subcommands. Easily included as source to avoid adding a dependency. -->
@@ -133,6 +145,15 @@
                 <groupId>io.undertow</groupId>
                 <artifactId>undertow-core</artifactId>
                 <version>${undertow-core.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <!-- Source: https://logging.apache.org/log4j/2.x/ -->
+            <!-- Binaries: https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api -->
+            <!-- Description: Implementation for Apache Log4J, a highly configurable logging tool that focuses on performance and low garbage generation. It has a plugin architecture that makes it extensible and supports asynchronous logging based on LMAX Disruptor. -->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>
                 <scope>compile</scope>
             </dependency>
             <!-- Source: https://logging.apache.org/log4j/2.x/ -->
@@ -164,11 +185,29 @@
             </dependency>
             <!-- Source: https://codehaus-plexus.github.io/plexus-interpolation/ -->
             <!-- Binaries: https://repo1.maven.org/maven2/org/codehaus/plexus/plexus-interpolation -->
-            <!-- Description: A collection of various utility classes to ease working with strings, files, command lines and more. -->
+            <!-- Description: Plexus interpolator is the outgrowth of multiple iterations of development focused on providing a more modular, flexible interpolation framework for the expression language style commonly seen in Maven, Plexus, and other related projects. -->
             <dependency>
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-interpolation</artifactId>
                 <version>${plexus-interpolation.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <!-- Source: https://codehaus-plexus.github.io/plexus-utils/ -->
+            <!-- Binaries: https://repo1.maven.org/maven2/org/codehaus/plexus/plexus-utils -->
+            <!-- Description: A collection of various utility classes to ease working with strings, files, command lines and more. -->
+            <dependency>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-utils</artifactId>
+                <version>${plexus-utils.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <!-- Source: https://codehaus-plexus.github.io/plexus-xml/ -->
+            <!-- Binaries: https://repo1.maven.org/maven2/org/codehaus/plexus/plexus-xml -->
+            <!-- Description: A collection of various utility classes to ease working with XML. -->
+            <dependency>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-xml</artifactId>
+                <version>${plexus-xml.version}</version>
                 <scope>compile</scope>
             </dependency>
             <!-- Source: https://jspecify.dev/ -->
@@ -186,9 +225,18 @@
             <!-- Description: Module "junit-jupiter" of JUnit -->
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter</artifactId>
+                <artifactId>junit-jupiter-api</artifactId>
                 <version>${junit-jupiter.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <!-- Official site: https://www.slf4j.org/ -->
+            <!-- Source: https://github.com/qos-ch/slf4j/releases -->
+            <!-- Description: Simple Logging Facade for Java -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>compile</scope>
             </dependency>
             <!-- Source: https://github.com/xerial/sqlite-jdbc/releases -->
             <!-- Binaries: https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc -->
@@ -199,21 +247,21 @@
                 <version>${sqlite-jdbc.version}</version>
                 <scope>compile</scope>
             </dependency>
+            <!-- Source: https://github.com/FasterXML/jackson-core -->
+            <!-- Binaries: https://repo1.maven.org/maven2/tools/jackson/core/jackson-core -->
+            <!-- Description: Core part of Jackson that defines Streaming API as well as basic shared abstractions -->
+            <dependency>
+                <groupId>tools.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+                <scope>compile</scope>
+            </dependency>
             <!-- Source: https://github.com/FasterXML/jackson -->
             <!-- Binaries: https://repo1.maven.org/maven2/tools/jackson/core/jackson-databind -->
             <!-- Description: General data-binding functionality for Jackson: works on core streaming API -->
             <dependency>
                 <groupId>tools.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <!-- Source: https://github.com/FasterXML/jackson-dataformat-xml -->
-            <!-- Binaries: https://repo1.maven.org/maven2/tools/jackson/dataformat/jackson-dataformat-xml -->
-            <!-- Description: Data format extension for Jackson to offer alternative support for serializing POJOs as XML and deserializing XML as POJOs. -->
-            <dependency>
-                <groupId>tools.jackson.dataformat</groupId>
-                <artifactId>jackson-dataformat-xml</artifactId>
                 <version>${jackson.version}</version>
                 <scope>compile</scope>
             </dependency>

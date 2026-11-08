@@ -6,7 +6,6 @@ import io.github.pgdro.tools.core.ConfigurationClass;
 import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.RegularExpressionsClass;
 import io.github.pgdro.tools.core.StringingClass;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;

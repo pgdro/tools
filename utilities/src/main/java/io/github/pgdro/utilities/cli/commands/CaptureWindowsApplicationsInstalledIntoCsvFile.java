@@ -1,4 +1,4 @@
-package io.github.pgdro.utilities.cli;
+package io.github.pgdro.utilities.cli.commands;
 
 import io.github.pgdro.tools.core.InteractiveInputClass;
 import io.github.pgdro.tools.core.ShellingClass;
@@ -10,7 +10,7 @@ import picocli.CommandLine.Mixin;
  */
 @CommandLine.Command(name = "CaptureWindowsApplicationsInstalledIntoCsvFile",
                      description = "Run the experimental new feature")
-class CaptureWindowsApplicationsInstalledIntoCsvFile implements Runnable {
+public class CaptureWindowsApplicationsInstalledIntoCsvFile implements Runnable {
     /**
      * adds the options defined in
      * InteractiveInputClass.OutFileNameOptionMixinClass to this command

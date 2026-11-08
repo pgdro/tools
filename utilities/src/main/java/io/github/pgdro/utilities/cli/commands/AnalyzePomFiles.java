@@ -1,4 +1,4 @@
-package io.github.pgdro.utilities.cli;
+package io.github.pgdro.utilities.cli.commands;
 
 import io.github.pgdro.tools.core.InteractiveInputClass;
 import io.github.pgdro.tools.core.LogExposureClass;
@@ -12,7 +12,7 @@ import picocli.CommandLine.Mixin;
 @CommandLine.Command(name = "AnalyzePomFiles",
                      description = "Exposes information from one or multiple Project Object Model "
                              + "(Apache Maven configuration file)")
-class AnalyzePomFiles implements Runnable {
+public class AnalyzePomFiles implements Runnable {
     /**
      * adds the options defined in
      * InteractiveInputClass.FileNameOptionMixinClass to this command

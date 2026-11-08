@@ -1,4 +1,4 @@
-package io.github.pgdro.utilities.cli;
+package io.github.pgdro.utilities.cli.commands;
 
 import io.github.pgdro.tools.core.InteractiveInputClass;
 import io.github.pgdro.tools.core.LogExposureClass;
@@ -12,7 +12,7 @@ import picocli.CommandLine.Mixin;
  */
 @CommandLine.Command(name = "GetSubFoldersFromFolders",
                      description = "Captures sub-folders from a Given Folder into Log file")
-class GetSubFoldersFromFolders implements Runnable {
+public class GetSubFoldersFromFolders implements Runnable {
 
     /**
      * adds the options defined in

@@ -1,4 +1,4 @@
-package io.github.pgdro.utilities.cli;
+package io.github.pgdro.utilities.cli.commands;
 
 import io.github.pgdro.tools.core.InteractiveInputClass;
 import io.github.pgdro.tools.core.LogExposureClass;
@@ -13,7 +13,7 @@ import picocli.CommandLine.Mixin;
  */
 @CommandLine.Command(name = "ArchiveFolders",
                      description = "Archive sub-folders from a given folder")
-class ArchiveFolders implements Runnable {
+public class ArchiveFolders implements Runnable {
 
     /**
      * String for FolderName
