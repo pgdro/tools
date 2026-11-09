@@ -23,6 +23,8 @@ import org.codehaus.plexus.interpolation.MapBasedValueSource;
 import org.codehaus.plexus.interpolation.StringSearchInterpolator;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
+import io.github.pgdro.tools.core.log.LogExposureClass;
+
 /**
  * Project related goodies
  */

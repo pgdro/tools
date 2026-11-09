@@ -3,9 +3,10 @@ package io.github.pgdro.tools.core.time;
 
 import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.ConfigurationClass;
-import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.RegularExpressionsClass;
 import io.github.pgdro.tools.core.StringingClass;
+import io.github.pgdro.tools.core.log.LogExposureClass;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;

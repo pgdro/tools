@@ -65,7 +65,7 @@
         <jspecify.version>1.0.1</jspecify.version>
         <jte.version>3.2.5</jte.version>
         <junit-jupiter.version>6.1.3</junit-jupiter.version>
-        <log4j.version>2.26.1</log4j.version>
+        <logback-classic.version>1.6.6</logback-classic.version>
         <maven-model.version>3.10.0</maven-model.version>
         <picocli.version>4.7.7</picocli.version>
         <plexus-interpolation.version>1.30.0</plexus-interpolation.version>
@@ -96,6 +96,15 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- Documentation: https://logback.qos.ch/documentation.html -->
+            <!-- Source: https://github.com/qos-ch/logback -->
+            <!-- Binaries: https://repo1.maven.org/maven2/ch/qos/logback/logback-classic/ -->
+            <!-- Description: Implementation of the SLF4J API for Logback, a reliable, generic, fast and flexible logging framework -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback-classic.version}</version>
+            </dependency>
             <!-- Source: https://github.com/networknt/json-schema-validator -->
             <!-- Binaries: https://repo1.maven.org/maven2/com/networknt/json-schema-validator -->
             <!-- Description: A JSON schema validator that supports draft v4, v6, v7, v2019-09 and v2020-12 -->
@@ -145,33 +154,6 @@
                 <groupId>io.undertow</groupId>
                 <artifactId>undertow-core</artifactId>
                 <version>${undertow-core.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <!-- Source: https://logging.apache.org/log4j/2.x/ -->
-            <!-- Binaries: https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-api -->
-            <!-- Description: Implementation for Apache Log4J, a highly configurable logging tool that focuses on performance and low garbage generation. It has a plugin architecture that makes it extensible and supports asynchronous logging based on LMAX Disruptor. -->
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-api</artifactId>
-                <version>${log4j.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <!-- Source: https://logging.apache.org/log4j/2.x/ -->
-            <!-- Binaries: https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-core -->
-            <!-- Description: Implementation for Apache Log4J, a highly configurable logging tool that focuses on performance and low garbage generation. It has a plugin architecture that makes it extensible and supports asynchronous logging based on LMAX Disruptor. -->
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>${log4j.version}</version>
-                <scope>compile</scope>
-            </dependency>
-            <!-- Source: https://logging.apache.org/log4j/2.x/ -->
-            <!-- Binaries: https://repo1.maven.org/maven2/org/apache/logging/log4j/log4j-slf4j2-impl -->
-            <!-- Description: The Apache Log4j SLF4J 2.0 API binding to Log4j 2 Core -->
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-slf4j2-impl</artifactId>
-                <version>${log4j.version}</version>
                 <scope>compile</scope>
             </dependency>
             <!-- Source: https://maven.apache.org/download.cgi -->
@@ -541,7 +523,7 @@
                                     <requireJavaVersion>
                                         <version>[27,)</version>
                                     </requireJavaVersion>
-                                </rules>    
+                                </rules>
                             </configuration>
                         </execution>
                         <execution>
@@ -554,7 +536,7 @@
                                     <requireMavenVersion>
                                         <version>[3.9,)</version>
                                     </requireMavenVersion>
-                                </rules>    
+                                </rules>
                             </configuration>
                         </execution>
                         <execution>

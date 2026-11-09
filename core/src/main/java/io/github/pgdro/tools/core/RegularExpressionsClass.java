@@ -3,6 +3,7 @@
  */
 package io.github.pgdro.tools.core;
 
+import io.github.pgdro.tools.core.log.LogExposureClass;
 import io.github.pgdro.tools.core.time.TimingClass;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

@@ -2,15 +2,18 @@
 package io.github.pgdro.utilities;
 
 import io.github.pgdro.tools.core.BasicStructuresClass;
-import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.ShellingClass;
 import io.github.pgdro.tools.core.StringingClass;
+import io.github.pgdro.tools.core.log.LogExposureClass;
+
 import java.io.File;
 import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Properties;
+
+import org.jspecify.annotations.NonNull;
 
 /**
  * Archiving wrapper
@@ -109,7 +112,7 @@ public final class ArchivingClass {
      * Setter for Archive Name
      * @param inArchiveName String
      */
-    public static void setArchiveName(final String inArchiveName) {
+    public static void setArchiveName(@NonNull final String inArchiveName) {
         final StringBuilder sbArchiveName = new StringBuilder();
         if (strArchivePrefix != null) {
             sbArchiveName.append(strArchivePrefix);
@@ -145,7 +148,7 @@ public final class ArchivingClass {
      * Setter for Archive Name
      * @param inArchivePwd String
      */
-    public static void setArchivePwd(final String inArchivePwd) {
+    public static void setArchivePwd(@NonNull final String inArchivePwd) {
         String strGivenPassword = inArchivePwd;
         if (inArchivePwd.matches("[A-Z0-9_]+")) {
             strGivenPassword = System.getenv(inArchivePwd); // get password value from Environment variable
@@ -174,7 +177,7 @@ public final class ArchivingClass {
      * Setter for Archive Executable
      * @param inArchivingExec String
      */
-    public static void setArchivingExecutable(final String inArchivingExec) {
+    public static void setArchivingExecutable(@NonNull final String inArchivingExec) {
         strArchivingExec = StringingClass.StringTransformationSubClass.encloseStringIfContainsSpace(
                 inArchivingExec, '\"');
     }

@@ -1,7 +1,7 @@
 package io.github.pgdro.tools.dynamic.web.html;
 
 import io.github.pgdro.tools.core.BasicStructuresClass;
-import io.github.pgdro.tools.core.LogExposureClass;
+import io.github.pgdro.tools.core.log.LogExposureClass;
 import io.github.pgdro.tools.core.time.TimingClass;
 import java.io.IOException;
 import java.io.InputStream;

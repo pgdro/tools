@@ -2,9 +2,9 @@
 package io.github.pgdro.tools.dynamic.database;
 
 import io.github.pgdro.tools.core.ConfigurationClass;
-import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.ProjectClass;
 import io.github.pgdro.tools.core.ShellingClass;
+import io.github.pgdro.tools.core.log.LogExposureClass;
 import io.github.pgdro.tools.dynamic.database.DatabaseOperationsClass.ConnectivitySubClass;
 import io.github.pgdro.tools.dynamic.database.DatabaseOperationsClass.ResultSettingSubClass;
 import java.sql.Connection;

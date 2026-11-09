@@ -1,7 +1,7 @@
 package io.github.pgdro.tools.dynamic.web.html;
 
 import io.github.pgdro.tools.core.ConfigurationClass;
-import io.github.pgdro.tools.core.LogExposureClass;
+import io.github.pgdro.tools.core.log.LogExposureClass;
 import io.github.pgdro.tools.dynamic.web.undertow.UndertowSessionClass;
 import java.util.ArrayList;
 import java.util.Arrays;

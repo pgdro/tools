@@ -1,6 +1,8 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
 package io.github.pgdro.utilities.cli;
 
+import java.nio.file.Path;
+
 import io.github.pgdro.tools.core.InteractiveInputClass;
 import io.github.pgdro.utilities.cli.commands.AnalyzeColumnsFromCsvFiles;
 import io.github.pgdro.utilities.cli.commands.AnalyzePomFiles;
@@ -35,7 +37,7 @@ public class ApplicationUtils {
      * @param args input arguments
      */
     public static void main( final String[] args ) {
-        InteractiveInputClass.startMeUpWithParameters("logs/Utilities", "/utilities-pom.xml");
+        InteractiveInputClass.startMeUpWithParameters("/utilities-pom.xml");
         final int intUtilsExitCode = new CommandLine(new ApplicationUtils()).execute(args);
         InteractiveInputClass.shutMeDownWithParameters(intUtilsExitCode, args[0]);
     }

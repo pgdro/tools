@@ -1,6 +1,7 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
 package io.github.pgdro.tools.core;
 
+import io.github.pgdro.tools.core.log.LogExposureClass;
 import io.github.pgdro.tools.core.time.TimingClass;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -75,12 +76,10 @@ public final class InteractiveInputClass {
 
     /**
      * Starting sequence with parameters
-     * @param inLogFile input log file
      * @param inPomFile input Project Object Model file
      */
-    public static void startMeUpWithParameters(final String inLogFile, final String inPomFile) {
+    public static void startMeUpWithParameters(final String inPomFile) {
         setStartDateTime();
-        LogExposureClass.ConfigurationSubClass.initiate(inLogFile);
         ProjectClass.setPomFile(inPomFile);
         startMeUp();
     }

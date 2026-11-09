@@ -1,8 +1,8 @@
 package io.github.pgdro.utilities.cli.commands;
 
 import io.github.pgdro.tools.core.InteractiveInputClass;
-import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.ProjectClass;
+import io.github.pgdro.tools.core.log.LogExposureClass;
 import picocli.CommandLine;
 import picocli.CommandLine.Mixin;
 

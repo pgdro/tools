@@ -1,8 +1,9 @@
 package io.github.pgdro.utilities.cli.commands;
 
 import io.github.pgdro.tools.core.InteractiveInputClass;
-import io.github.pgdro.tools.core.LogExposureClass;
 import io.github.pgdro.tools.core.file.FileOperationsClass;
+import io.github.pgdro.tools.core.log.LogExposureClass;
+
 import java.util.List;
 import picocli.CommandLine;
 import picocli.CommandLine.Mixin;

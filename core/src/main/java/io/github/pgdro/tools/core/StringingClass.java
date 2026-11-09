@@ -11,6 +11,8 @@ import java.util.Locale;
 import java.util.Properties;
 import org.jspecify.annotations.NonNull;
 
+import io.github.pgdro.tools.core.log.LogExposureClass;
+
 /**
  * String related logic
  */
@@ -373,7 +375,7 @@ public final class StringingClass {
          * @param inString Original string
          * @return String
          */
-        public static String encloseStringIfContainsSpace(final @NonNull String inString, final char inChar) {
+        public static String encloseStringIfContainsSpace(@NonNull final String inString, final char inChar) {
             String strReturn = inString;
             if (inString.contains(" ")) {
                 strReturn = encloseStringWithCharacter(inString, inChar);
