@@ -4,7 +4,6 @@ import io.github.pgdro.tools.core.ConfigurationClass;
 import io.github.pgdro.tools.core.InteractiveInputClass;
 import io.github.pgdro.tools.core.file.FileOperationsClass;
 import io.github.pgdro.tools.core.log.LogExposureClass;
-
 import java.util.Map;
 import picocli.CommandLine;
 import picocli.CommandLine.Mixin;
@@ -33,6 +32,9 @@ public class CleanOlderFilesFromFolder implements Runnable {
             required = true)
     private int intDaysOlderLimit;
 
+    /**
+     * Main
+     */
     @Override
     public void run() {
         FileOperationsClass.DeletingSubClass.OlderSubSubClass.setCleanedFolderStatistics(true);

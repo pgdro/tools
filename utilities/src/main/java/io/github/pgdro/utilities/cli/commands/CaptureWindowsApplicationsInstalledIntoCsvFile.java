@@ -19,6 +19,9 @@ public class CaptureWindowsApplicationsInstalledIntoCsvFile implements Runnable 
     private final InteractiveInputClass.OutFileNameOptionMixinClass optionOut
             = new InteractiveInputClass.OutFileNameOptionMixinClass();
 
+    /**
+     * Main
+     */
     @Override
     public void run() {
         final String outCsvFile = optionOut.getOutFileName();

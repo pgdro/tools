@@ -8,7 +8,6 @@
     <property name="MAX_FILE_SIZE" value="10MB"/>
     <property name="MAX_HISTORY_DAYS" value="30"/>
     <property name="PATTERN_LAYOUT" value="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} [%-5level] [%thread] %logger [%file:%line %M] - %msg%n"/>
-    <!-- <property name="PATTERN_LAYOUT" value="%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ} [%-6p] %C{3}.%M(%F:%L) - %msg%n"/> -->
     <property name="ROOT_LEVEL" value="${myapp.log.level:-INFO}"/>
     <property name="TOTAL_SIZE_CAP" value="1GB"/>
     <!-- Error file attributes -->

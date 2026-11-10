@@ -1,11 +1,10 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
 package io.github.pgdro.tools.core;
 
+import io.github.pgdro.tools.core.log.LogExposureClass;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-
-import io.github.pgdro.tools.core.log.LogExposureClass;
 
 /**
  * Configuration strings management

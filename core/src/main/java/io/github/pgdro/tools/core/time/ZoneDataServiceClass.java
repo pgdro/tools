@@ -5,7 +5,6 @@ import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.RegularExpressionsClass;
 import io.github.pgdro.tools.core.file.FileOperationsClass;
 import io.github.pgdro.tools.core.log.LogExposureClass;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

@@ -4,7 +4,6 @@ import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.InteractiveInputClass;
 import io.github.pgdro.tools.core.file.FileContentClass;
 import io.github.pgdro.tools.core.log.LogExposureClass;
-
 import java.util.List;
 import java.util.Map;
 import picocli.CommandLine;
@@ -75,6 +74,9 @@ public class AnalyzeColumnsFromCsvFiles implements Runnable {
         });
     }
 
+    /**
+     * Main
+     */
     @Override
     public void run() {
         final String[] inFiles = optFileNames.getInFileNames();

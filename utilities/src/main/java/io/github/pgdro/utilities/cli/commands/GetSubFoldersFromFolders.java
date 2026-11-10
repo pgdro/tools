@@ -3,7 +3,6 @@ package io.github.pgdro.utilities.cli.commands;
 import io.github.pgdro.tools.core.InteractiveInputClass;
 import io.github.pgdro.tools.core.file.FileOperationsClass;
 import io.github.pgdro.tools.core.log.LogExposureClass;
-
 import java.util.List;
 import picocli.CommandLine;
 import picocli.CommandLine.Mixin;
@@ -23,6 +22,9 @@ public class GetSubFoldersFromFolders implements Runnable {
     private final InteractiveInputClass.FolderNameOptionMixinClass optFolderNames
             = new InteractiveInputClass.FolderNameOptionMixinClass();
 
+    /**
+     * Main
+     */
     @Override
     public void run() {
         final String[] inFolders = optFolderNames.getFolderNames();

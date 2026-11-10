@@ -1,5 +1,6 @@
 package io.github.pgdro.tools.core;
 
+import io.github.pgdro.tools.core.log.LogExposureClass;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -10,8 +11,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Properties;
 import org.jspecify.annotations.NonNull;
-
-import io.github.pgdro.tools.core.log.LogExposureClass;
 
 /**
  * String related logic
@@ -316,7 +315,7 @@ public final class StringingClass {
         private StringEvaluationSubClass() {
             // intentionally blank
         }
-    
+
     }
 
     /**

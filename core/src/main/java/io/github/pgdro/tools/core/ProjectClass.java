@@ -1,6 +1,7 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
 package io.github.pgdro.tools.core;
 
+import io.github.pgdro.tools.core.log.LogExposureClass;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -22,8 +23,6 @@ import org.codehaus.plexus.interpolation.InterpolationException;
 import org.codehaus.plexus.interpolation.MapBasedValueSource;
 import org.codehaus.plexus.interpolation.StringSearchInterpolator;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
-
-import io.github.pgdro.tools.core.log.LogExposureClass;
 
 /**
  * Project related goodies

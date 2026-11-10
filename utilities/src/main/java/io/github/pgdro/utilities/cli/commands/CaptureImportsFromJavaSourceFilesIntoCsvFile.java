@@ -28,6 +28,9 @@ public class CaptureImportsFromJavaSourceFilesIntoCsvFile implements Runnable {
     private final InteractiveInputClass.OutFileNameOptionMixinClass optionOut =
             new InteractiveInputClass.OutFileNameOptionMixinClass();
 
+    /**
+     * Main
+     */
     @Override
     public void run() {
         final String[] inFolders = optFolderNames.getFolderNames();

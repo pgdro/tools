@@ -32,6 +32,9 @@ public class CaptureChecksumsOfFilesFromFoldersIntoCsvFile implements Runnable {
     private final InteractiveInputClass.OutFileNameOptionMixinClass optOutFileName
             = new InteractiveInputClass.OutFileNameOptionMixinClass();
 
+    /**
+     * Main
+     */
     @Override
     public void run() {
         final String[] inAlgorithms = {"SHA-256", "SHA3-256"};

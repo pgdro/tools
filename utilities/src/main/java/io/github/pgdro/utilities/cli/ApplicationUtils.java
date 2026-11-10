@@ -1,8 +1,6 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
 package io.github.pgdro.utilities.cli;
 
-import java.nio.file.Path;
-
 import io.github.pgdro.tools.core.InteractiveInputClass;
 import io.github.pgdro.utilities.cli.commands.AnalyzeColumnsFromCsvFiles;
 import io.github.pgdro.utilities.cli.commands.AnalyzePomFiles;

@@ -21,6 +21,9 @@ public class AnalyzePomFiles implements Runnable {
     private final InteractiveInputClass.InFileNameOptionMixinClass optFileNames
             = new InteractiveInputClass.InFileNameOptionMixinClass();
 
+    /**
+     * Main
+     */
     @Override
     public void run() {
         final String strFeedbackThis = String.format("For this project relevant POM information is: {%s}",

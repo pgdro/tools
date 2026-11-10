@@ -68,6 +68,9 @@ public class ArchiveFolders implements Runnable {
     private final InteractiveInputClass.FolderDestinationOptionMixinClass optFolderDest
             = new InteractiveInputClass.FolderDestinationOptionMixinClass();
 
+    /**
+     * Main
+     */
     @Override
     public void run() {
         final Properties propFolder = new Properties();
