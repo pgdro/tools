@@ -49,7 +49,7 @@
     </modules>
 
     <properties>
-        <revision>2.3.1</revision>
+        <revision>2.3.2</revision>
         <!-- File encoding properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -91,7 +91,7 @@
         <open-java-format.version>21.0.2</open-java-format.version>
         <pmd.version>7.29.0</pmd.version>
         <takari-lifecycle-plugin.version>2.4.0</takari-lifecycle-plugin.version>
-        <versions-maven-plugin.version>2.24.0</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.25.1</versions-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
