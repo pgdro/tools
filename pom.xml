@@ -65,12 +65,12 @@
         <jspecify.version>1.0.1</jspecify.version>
         <jte.version>3.2.5</jte.version>
         <junit-jupiter.version>6.1.3</junit-jupiter.version>
-        <logback-classic.version>1.6.6</logback-classic.version>
+        <logback-classic.version>1.6.7</logback-classic.version>
         <maven-model.version>3.10.0</maven-model.version>
         <picocli.version>4.7.7</picocli.version>
         <plexus-interpolation.version>1.30.0</plexus-interpolation.version>
-        <plexus-utils.version>4.1.0</plexus-utils.version>
-        <plexus-xml.version>4.2.0</plexus-xml.version>
+        <plexus-utils.version>4.2.0</plexus-utils.version>
+        <plexus-xml.version>4.2.1</plexus-xml.version>
         <slf4j.version>2.0.20</slf4j.version>
         <sqlite-jdbc.version>3.54.1.0</sqlite-jdbc.version>
         <undertow-core.version>2.4.4.Final</undertow-core.version>
@@ -91,7 +91,7 @@
         <open-java-format.version>21.0.2</open-java-format.version>
         <pmd.version>7.29.0</pmd.version>
         <takari-lifecycle-plugin.version>2.4.0</takari-lifecycle-plugin.version>
-        <versions-maven-plugin.version>2.25.1</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.25.2</versions-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
