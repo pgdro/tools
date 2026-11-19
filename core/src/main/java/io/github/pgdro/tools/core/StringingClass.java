@@ -48,7 +48,7 @@ public final class StringingClass {
          * @return String cleaned
          */
         public static String cleanStringAsDatabaseObject(final String strObject) {
-            return strObject.replaceAll("[^A-Za-z0-9_/.|()]", "");
+            return strObject.replaceAll("[^A-Za-z0-9_/.,|()]", "");
         }
 
         /**
