@@ -10,6 +10,9 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.SequencedMap;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.jspecify.annotations.NonNull;
 
 /**
@@ -20,6 +23,12 @@ public final class TableClass {
     /* default */ private static String cssTextRightNw = "text-align:right;white-space:nowrap;font-family:sans-serif;";
     /** Minimum string length threshold for time-zone pattern replacement */
     private static final long LARGE_STRING = 20;
+    /** Regular Expression for SHA-256 */
+    private static final String REGEXP_SHA256 = "^[A-Fa-f0-9]{64}$";
+    /** Regular Expression for SHA-256 */
+    private static final String REGEXP_SHA384 = "^[A-Fa-f0-9]{96}$";
+    /** Regular Expression for SHA-512 */
+    private static final String REGEXP_SHA512 = "^[A-Fa-f0-9]{128}$";
     /** Time Zone variable */
     private static String strInTimeZone;
     /** Time Zone variable */
@@ -265,10 +274,6 @@ public final class TableClass {
                     "decimal",
                     "integer",
                     "long",
-                    ConfigurationClass.STR_TS_MSEC,
-                    ConfigurationClass.STR_TIMESTAMP,
-                    ConfigurationClass.STR_DATE_HRMN,
-                    ConfigurationClass.STR_JUST_DATE,
                     "byteSize",
                     "fullAging");
 
@@ -341,10 +346,16 @@ public final class TableClass {
                     cellStyle = MAP_SPEC_VALS.get(strValue).newStyle;
                     strValue  = MAP_SPEC_VALS.get(strValue).newValue;
                 } else {
+                    final List<String> listChecksums = List.of(REGEXP_SHA256, REGEXP_SHA384, REGEXP_SHA512);
+                    final String strRegExp = "^(" + String.join("|", listChecksums) + ")$";
+                    final Pattern pattern = Pattern.compile(strRegExp);
+                    final Matcher matcher = pattern.matcher(strValue);
                     final String tempValue = transformValueByPatternMatch(strValue);
                     if (tempValue != null) {
                         cellStyle = cssTextRightNw;
                         strValue  = tempValue;
+                    } else if (matcher.find()) {
+                        cellStyle = cssTextRightNw + "font:0.7rem monospace;";
                     } else if (strLength >= LARGE_STRING) {
                         strValue  = RegularExpressionsClass.replacePatternsWithTimeZones(strValue);
                         cellStyle = strValue.equals(inValue.toString()) ? cellStyle : cssTextRightNw;

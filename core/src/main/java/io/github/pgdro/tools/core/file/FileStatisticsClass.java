@@ -271,7 +271,7 @@ public final class FileStatisticsClass {
         final ZonedDateTime zFileTimeStamp = TimingClass.LocalizationSubClass.getFileLastModifiedZonedDateTime(file);
         fileProperties.put("Last Modified Timestamp",
                 TimingClass.LocalizationSubClass.convertZonedTimestampFriendly(zFileTimeStamp,
-                        TimingClass.DATE_TIME_MS_ABRV));
+                        TimingClass.DATE_TIME_MS));
         final String lastModifAging = AgingSubClass.computeAgingIntoHumanReadableWords(zFileTimeStamp, inRefTimeStamp);
         fileProperties.put("Last Modified Aging", lastModifAging);
         fileProperties.putAll(computeFileMultipleChecksumsIntoProperties(file));
