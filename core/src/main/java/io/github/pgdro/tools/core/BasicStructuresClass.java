@@ -146,6 +146,18 @@ public final class BasicStructuresClass {
     }
 
     /**
+     * Normalizing degrees to max. 360 value
+     * @param degrees input original degree value
+     * @return normalized value
+     */
+    public static double normalizeDegrees(final double degrees) {
+        final double result = degrees % 360.0;
+        return result < 0.0
+                ? result + 360.0
+                : result;
+    }
+
+    /**
      * List and Maps management
      */
     public static final class ListAndMapSubClass {

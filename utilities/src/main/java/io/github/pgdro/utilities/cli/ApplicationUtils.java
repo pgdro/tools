@@ -9,6 +9,7 @@ import io.github.pgdro.utilities.cli.commands.CaptureChecksumsOfFilesFromFolders
 import io.github.pgdro.utilities.cli.commands.CaptureImportsFromJavaSourceFilesIntoCsvFile;
 import io.github.pgdro.utilities.cli.commands.CaptureWindowsApplicationsInstalledIntoCsvFile;
 import io.github.pgdro.utilities.cli.commands.CleanOlderFilesFromFolder;
+import io.github.pgdro.utilities.cli.commands.GetRemoteMavenPackageDetails;
 import io.github.pgdro.utilities.cli.commands.GetSubFoldersFromFolders;
 import picocli.CommandLine;
 
@@ -25,6 +26,7 @@ import picocli.CommandLine;
             CaptureImportsFromJavaSourceFilesIntoCsvFile.class,
             CaptureWindowsApplicationsInstalledIntoCsvFile.class,
             CleanOlderFilesFromFolder.class,
+            GetRemoteMavenPackageDetails.class,
             GetSubFoldersFromFolders.class
     }
 )
