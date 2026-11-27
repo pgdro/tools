@@ -13,7 +13,7 @@
 
     <artifactId>utilities</artifactId>
     <name>utilities</name>
-    <description>Utilities to solve every actions (folder archiving, old files removal, file within folder checksum calculation asf.)</description>
+    <description>Utilities to solve every action (folder archiving, old files removal, file within folder checksum calculation asf.)</description>
     <packaging>jar</packaging>
 
     <dependencies>

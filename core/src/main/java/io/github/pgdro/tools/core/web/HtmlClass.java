@@ -1,5 +1,5 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
-package io.github.pgdro.tools.dynamic.web.html;
+package io.github.pgdro.tools.core.web;
 
 import io.github.pgdro.tools.core.ConfigurationClass;
 import io.github.pgdro.tools.core.ProjectClass;

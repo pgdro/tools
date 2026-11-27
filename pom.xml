@@ -49,7 +49,7 @@
     </modules>
 
     <properties>
-        <revision>2.3.3</revision>
+        <revision>2.4.0</revision>
         <!-- File encoding properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>

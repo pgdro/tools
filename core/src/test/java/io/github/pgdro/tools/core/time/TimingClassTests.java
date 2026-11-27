@@ -99,10 +99,10 @@ final class TimingClassTests {
 
     @Test
     void testConvertTimestampFriendly() {
-        TimingClass.LocalizationSubClass.setInputTimeZone("UTC");
-        TimingClass.LocalizationSubClass.setOutputTimeZone("America/New_York");
+        TimeLocalizationClass.setInputTimeZone("UTC");
+        TimeLocalizationClass.setOutputTimeZone("America/New_York");
         final String strOriginal = "2026-02-08 15:09:34";
-        final String handled = TimingClass.LocalizationSubClass.convertTimestampFriendly(strOriginal, "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm:ss");
+        final String handled = TimeLocalizationClass.convertTimestampFriendly(strOriginal, "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm:ss");
         assertNotEquals(strOriginal, handled, String.format(ORIG_NQ_EXPCT, handled, strOriginal));
     }
 
@@ -110,7 +110,7 @@ final class TimingClassTests {
     void testGetFileLastModifiedTimeAsHumanReadableFormat() throws IOException {
         final Path tempFile = Files.createTempFile("test-file-", ".txt");
         @SuppressWarnings("null")
-        final String handled = TimingClass.LocalizationSubClass.FileSubSubClass.getFileLastModifiedTimeAsHumanReadableFormat(tempFile);
+        final String handled = TimeLocalizationClass.FileSubSubClass.getFileLastModifiedTimeAsHumanReadableFormat(tempFile);
         assertTrue(StringingClass.StringEvaluationSubClass.isStringActuallyLongTimestampWithMilliseconds(handled),
                 "Last Modified timestamp is not a long timestamp with milliseconds");
     }

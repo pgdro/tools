@@ -1,8 +1,10 @@
-package io.github.pgdro.tools.dynamic.web.html;
+package io.github.pgdro.tools.core.file;
 
 import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.log.LogExposureClass;
+import io.github.pgdro.tools.core.time.TimeLocalizationClass;
 import io.github.pgdro.tools.core.time.TimingClass;
+import io.github.pgdro.tools.core.web.HtmlClass;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -46,8 +48,7 @@ public final class FileInfoClass {
     public static String gatherFileStatistics(final Path fileName, final boolean fileFullPath) {
         if (Files.exists(fileName)) {
             fileSizeBytes = fileName.toFile().length();
-            fileModifiedTs = TimingClass
-                    .LocalizationSubClass
+            fileModifiedTs = TimeLocalizationClass
                     .FileSubSubClass
                     .getFileLastModifiedTimeAsHumanReadableFormat(fileName);
         } else {
@@ -104,7 +105,7 @@ public final class FileInfoClass {
                 final long lastModified = resourceUrl.openConnection().getLastModified();
                 final ZonedDateTime zonedLastModified
                         = ZonedDateTime.ofInstant(Instant.ofEpochMilli(lastModified), ZoneId.systemDefault());
-                strFileModifiedTs = TimingClass.LocalizationSubClass.convertZonedTimestampFriendly(
+                strFileModifiedTs = TimeLocalizationClass.convertZonedTimestampFriendly(
                         zonedLastModified,
                         TimingClass.DATE_TIME_MS_ABRV).replaceAll(".000$", "");
             } catch (IOException e) {

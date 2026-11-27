@@ -543,4 +543,5 @@ public final class BasicStructuresClass {
     private BasicStructuresClass() {
         // intentionally blank
     }
+
 }

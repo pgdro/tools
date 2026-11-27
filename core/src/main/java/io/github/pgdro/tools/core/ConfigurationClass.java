@@ -78,6 +78,8 @@ public final class ConfigurationClass {
     public static final String STR_MILLISECOND = "Millisecond";
     /** Milliseconds string constant */
     public static final String STR_MILLISECONDS = "Milliseconds";
+    /** Multiple constant */
+    public static final String STR_MISSING = "missing";
     /** string constant */
     public static final String STR_MONITOR_NAME = "Monitor Name";
     /** Multiple constant */

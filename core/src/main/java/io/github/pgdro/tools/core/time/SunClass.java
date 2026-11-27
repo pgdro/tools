@@ -381,6 +381,7 @@ public final class SunClass {
          * 90° + ~0.833° for refraction + solar radius.
          */
         private static final double SUNRISE_SUNSET_ZENITH = 90.833;
+
         /**
          * Record for SunRise and SunSet
          */
@@ -392,7 +393,9 @@ public final class SunClass {
         /**
          * Constructor
          */
-        private SunTimesSubClass() {}
+        private SunTimesSubClass() {
+            // intentionally blank
+        }
 
         /**
          * Computes sunrise and sunset for the UTC calendar date containing utcTimestamp.

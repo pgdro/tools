@@ -6,7 +6,7 @@ import gg.jte.TemplateEngine;
 import gg.jte.resolve.ResourceCodeResolver;
 import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.log.LogExposureClass;
-import io.github.pgdro.tools.dynamic.web.html.TableClass;
+import io.github.pgdro.tools.core.web.TableClass;
 import io.undertow.Handlers;
 import io.undertow.Undertow;
 import io.undertow.server.HttpHandler;

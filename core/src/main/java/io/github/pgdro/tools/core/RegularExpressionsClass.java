@@ -4,6 +4,7 @@
 package io.github.pgdro.tools.core;
 
 import io.github.pgdro.tools.core.log.LogExposureClass;
+import io.github.pgdro.tools.core.time.TimeLocalizationClass;
 import io.github.pgdro.tools.core.time.TimingClass;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -102,6 +103,9 @@ public final class RegularExpressionsClass {
     private static final String REGEXP_TS = REGEXP_DATE + "\\s" + REGEXP_TIME;
     /** Regular Expression for Time-stamp with Milliseconds identification/validation */
     private static final String REGEXP_TS_MS = REGEXP_DATE + "\\s" + REGEXP_TIME + "\\.\\d{3}";
+    /** Regular Expression for RFC_1123_DATE_TIME identification/validation */
+    public static final String REGEXP_TS_RFC1123 = "^(Mon|Tue|Wed|Thu|Fri|Sat|Sun), "
+            +"\\d{1,2} (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \\d{4} \\d{2}:\\d{2}:\\d{2} GMT$";
     /** Version Patterns Map */
     private static final String REGEXP_VERSION
             = "^[0-9.]+(|\\.(Alpha|Beta|CR|Final|RC)|-(alpha|alpha-|Beta|beta|beta-|M|pre1|RC|rc|rc-)\\d{1,2})$";
@@ -338,7 +342,7 @@ public final class RegularExpressionsClass {
                         final DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern(inPattern, Locale.US);
                         final String outPattern = MAP_PATTERNS.get(matchedGroup).outputAbbreviated;
                         final DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern(outPattern, Locale.US);
-                        return TimingClass.LocalizationSubClass.convertDateOrTimestampFormats(
+                        return TimeLocalizationClass.convertDateOrTimestampFormats(
                                 text,
                                 inputFormat,
                                 outputFormat);
@@ -521,6 +525,7 @@ public final class RegularExpressionsClass {
          * Loading Regular Expression Properties
          */
         private static void loadRegularExpressionProperties() {
+            REG_EXP_PROPS.put("MavenPackage", REGEXP_MAVEN_PKG);
             REG_EXP_PROPS.put("byteSize", REGEXP_BYTE_SIZE);
             REG_EXP_PROPS.put("decimal", REGEXP_NO_DECIMAL);
             REG_EXP_PROPS.put("shortAging", REGEXP_AGING_ABRV);
@@ -529,6 +534,7 @@ public final class RegularExpressionsClass {
             REG_EXP_PROPS.put("long", REGEXP_NO_LONG);
             REG_EXP_PROPS.put("numeric", REGEXP_NO_NUMERIC);
             REG_EXP_PROPS.put(REGEXP_LONG_TS_MS, REGEXP_LONG_TS_MS);
+            REG_EXP_PROPS.put(REGEXP_TS_RFC1123, REGEXP_TS_RFC1123);
             REG_EXP_PROPS.put(STR_AGING_TS_MS, REGEXP_AGE_TS_MS9);
             REG_EXP_PROPS.put(STR_AGING_TS, REGEXP_AGE_TS9);
             REG_EXP_PROPS.put(STR_AGING_TIME, REGEXP_AGE_TIME9);

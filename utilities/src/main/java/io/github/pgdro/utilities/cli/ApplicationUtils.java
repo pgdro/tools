@@ -37,7 +37,7 @@ public class ApplicationUtils {
      * @param args input arguments
      */
     public static void main( final String[] args ) {
-        InteractiveInputClass.startMeUpWithParameters("/utilities-pom.xml");
+        InteractiveInputClass.startMeUpWithParameters("/tools-utilities-pom.xml");
         final int intUtilsExitCode = new CommandLine(new ApplicationUtils()).execute(args);
         InteractiveInputClass.shutMeDownWithParameters(intUtilsExitCode, args[0]);
     }

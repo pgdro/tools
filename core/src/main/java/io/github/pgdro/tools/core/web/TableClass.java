@@ -1,8 +1,10 @@
-package io.github.pgdro.tools.dynamic.web.html;
+/** Copyright 2026 Daniel-Gheorghe Popiniuc */
+package io.github.pgdro.tools.core.web;
 
 import io.github.pgdro.tools.core.ConfigurationClass;
+import io.github.pgdro.tools.core.ConversionsClass;
 import io.github.pgdro.tools.core.RegularExpressionsClass;
-import io.github.pgdro.tools.core.time.TimingClass;
+import io.github.pgdro.tools.core.time.TimeLocalizationClass;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -12,7 +14,6 @@ import java.util.SequencedMap;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.jspecify.annotations.NonNull;
 
 /**
@@ -105,7 +106,7 @@ public final class TableClass {
      */
     public static void setInTimeZone(final String inTimeZone) {
         strInTimeZone = inTimeZone;
-        TimingClass.LocalizationSubClass.setInputTimeZone(inTimeZone);
+        TimeLocalizationClass.setInputTimeZone(inTimeZone);
     }
 
     /**
@@ -114,7 +115,7 @@ public final class TableClass {
      */
     public static void setOutTimeZone(final String outTimeZone) {
         strOutTimeZone = outTimeZone;
-        TimingClass.LocalizationSubClass.setOutputTimeZone(outTimeZone);
+        TimeLocalizationClass.setOutputTimeZone(outTimeZone);
     }
 
     /**

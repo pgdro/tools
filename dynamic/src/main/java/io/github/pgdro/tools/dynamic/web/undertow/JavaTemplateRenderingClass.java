@@ -3,7 +3,7 @@ package io.github.pgdro.tools.dynamic.web.undertow;
 import gg.jte.TemplateEngine;
 import gg.jte.output.Utf8ByteOutput;
 import io.github.pgdro.tools.core.time.TimingClass;
-import io.github.pgdro.tools.dynamic.web.html.HtmlClass;
+import io.github.pgdro.tools.core.web.HtmlClass;
 import io.undertow.io.Sender;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.util.HeaderMap;

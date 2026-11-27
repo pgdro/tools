@@ -1,13 +1,10 @@
-package io.github.pgdro.tools.dynamic.web.html;
+package io.github.pgdro.tools.core.web;
 
 import io.github.pgdro.tools.core.ConfigurationClass;
 import io.github.pgdro.tools.core.log.LogExposureClass;
-import io.github.pgdro.tools.dynamic.web.undertow.UndertowSessionClass;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Deque;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 import java.util.SequencedMap;
 import org.jspecify.annotations.NonNull;
@@ -78,60 +75,6 @@ public final class SelectInputClass {
         });
         outHtml.add("</select>");
         return String.join("", outHtml);
-    }
-
-    /**
-     * building list of values
-     * @param filterIdentifier filter identifier
-     * @param queryParams input Parameter
-     * @param smapAllValues Sequenced Map with all values
-     * @return concatenated String with list of values for given filter
-     */
-    public static List<String> computeListOfValuesFromSessionsOrPageParameter(
-            final String filterIdentifier,
-            final Map<String, Deque<String>> queryParams,
-            final SequencedMap<String, String> smapAllValues) {
-        final String strWebId             = filterIdentifier + "[]";
-        final Deque<String> pageParameter = queryParams.get(strWebId);
-        List<String> listReturn           = new ArrayList<>();
-        if (pageParameter != null) {
-            listReturn = new ArrayList<>(pageParameter);
-            UndertowSessionClass.setSessionAttribute(strWebId, String.join(multiValueGlue, pageParameter));
-        } else {
-            final Object sessionValues = UndertowSessionClass.getSession().getAttribute(strWebId);
-            if (sessionValues != null) {
-                listReturn = List.of(sessionValues.toString().split(multiValueGlue));
-            }
-        }
-        if (listReturn.isEmpty()) {
-            listReturn = new ArrayList<>(smapAllValues.keySet());
-        }
-        return listReturn;
-    }
-
-    /**
-     * computing single Value for PageParameter/Session
-     * @param filterIdentifier filter identifier
-     * @param queryParams input Parameter
-     * @param defaultValue default Value
-     * @return return value
-     */
-    public static String computeSingleValueFromPageParameterOrSession(
-            final String filterIdentifier,
-            final Map<String, Deque<String>> queryParams,
-            final String defaultValue) {
-        final Deque<String> pageParameter = queryParams.get(filterIdentifier);
-        String strReturn = "";
-        if (pageParameter != null) {
-            strReturn = pageParameter.toString();
-            UndertowSessionClass.setSessionAttribute(filterIdentifier, strReturn);
-        } else {
-            final Object sessionValues = UndertowSessionClass.getSession().getAttribute(filterIdentifier);
-            if (sessionValues != null) {
-                strReturn = sessionValues.toString();
-            }
-        }
-        return strReturn.isBlank() ? defaultValue : strReturn.replaceAll("[\\[\\]]", "");
     }
 
     /**

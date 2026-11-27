@@ -1,6 +1,8 @@
+/** Copyright 2026 Daniel-Gheorghe Popiniuc */
 package io.github.pgdro.tools.dynamic.web.undertow;
 
 import io.github.pgdro.tools.core.time.ZoneDataServiceClass;
+import io.github.pgdro.tools.core.web.SelectInputClass;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
 import io.undertow.server.handlers.PathHandler;
@@ -9,7 +11,9 @@ import io.undertow.server.session.Session;
 import io.undertow.server.session.SessionAttachmentHandler;
 import io.undertow.server.session.SessionCookieConfig;
 import io.undertow.util.Sessions;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 import java.util.Map;
 import java.util.SequencedMap;
 
@@ -27,6 +31,61 @@ public final class UndertowSessionClass {
     // Private constructor to prevent instantiation
     private UndertowSessionClass() {
         // intentionally blank
+    }
+
+    /**
+     * building list of values
+     * @param filterIdentifier filter identifier
+     * @param queryParams input Parameter
+     * @param smapAllValues Sequenced Map with all values
+     * @return concatenated String with list of values for given filter
+     */
+    public static List<String> computeListOfValuesFromSessionsOrPageParameter(
+            final String filterIdentifier,
+            final Map<String, Deque<String>> queryParams,
+            final SequencedMap<String, String> smapAllValues) {
+        final String strWebId             = filterIdentifier + "[]";
+        final Deque<String> pageParameter = queryParams.get(strWebId);
+        List<String> listReturn           = new ArrayList<>();
+        final String multiValueGlue = SelectInputClass.getMultiValueGlue();
+        if (pageParameter != null) {
+            listReturn = new ArrayList<>(pageParameter);
+            UndertowSessionClass.setSessionAttribute(strWebId, String.join(multiValueGlue, pageParameter));
+        } else {
+            final Object sessionValues = UndertowSessionClass.getSession().getAttribute(strWebId);
+            if (sessionValues != null) {
+                listReturn = List.of(sessionValues.toString().split(multiValueGlue));
+            }
+        }
+        if (listReturn.isEmpty()) {
+            listReturn = new ArrayList<>(smapAllValues.keySet());
+        }
+        return listReturn;
+    }
+
+    /**
+     * computing single Value for PageParameter/Session
+     * @param filterIdentifier filter identifier
+     * @param queryParams input Parameter
+     * @param defaultValue default Value
+     * @return return value
+     */
+    public static String computeSingleValueFromPageParameterOrSession(
+            final String filterIdentifier,
+            final Map<String, Deque<String>> queryParams,
+            final String defaultValue) {
+        final Deque<String> pageParameter = queryParams.get(filterIdentifier);
+        String strReturn = "";
+        if (pageParameter != null) {
+            strReturn = pageParameter.toString();
+            UndertowSessionClass.setSessionAttribute(filterIdentifier, strReturn);
+        } else {
+            final Object sessionValues = UndertowSessionClass.getSession().getAttribute(filterIdentifier);
+            if (sessionValues != null) {
+                strReturn = sessionValues.toString();
+            }
+        }
+        return strReturn.isBlank() ? defaultValue : strReturn.replaceAll("[\\[\\]]", "");
     }
 
     /**

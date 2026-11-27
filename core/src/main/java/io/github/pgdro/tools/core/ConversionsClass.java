@@ -1,9 +1,7 @@
 /** Copyright 2026 Daniel-Gheorghe Popiniuc */
-package io.github.pgdro.tools.dynamic.web.html;
+package io.github.pgdro.tools.core;
 
-import io.github.pgdro.tools.core.BasicStructuresClass;
-import io.github.pgdro.tools.core.ConfigurationClass;
-import io.github.pgdro.tools.core.StringingClass;
+import io.github.pgdro.tools.core.time.TimeLocalizationClass;
 import io.github.pgdro.tools.core.time.TimingClass;
 import java.util.Locale;
 import java.util.Map;
@@ -74,7 +72,7 @@ public final class ConversionsClass {
      * @return converted String
      */
     private String convertDate(final String inputString) {
-        return TimingClass.LocalizationSubClass.formatDateFriendly(
+        return TimeLocalizationClass.formatDateFriendly(
                 inputString,
                 TimingClass.ISO_DATE,
                 TimingClass.ISO_DATE_ABRV);
@@ -86,7 +84,7 @@ public final class ConversionsClass {
      * @return converted String
      */
     private String convertDateWithHourAndMinute(final String inputString) {
-        return TimingClass.LocalizationSubClass.convertTimestampFriendly(
+        return TimeLocalizationClass.convertTimestampFriendly(
                 inputString,
                 TimingClass.DATE_HRMN,
                 TimingClass.DATE_HRMN_ABRV);
@@ -98,7 +96,7 @@ public final class ConversionsClass {
      * @return converted String
      */
     private String convertTimestamp(final String inputString) {
-        return TimingClass.LocalizationSubClass.convertTimestampFriendly(
+        return TimeLocalizationClass.convertTimestampFriendly(
                 inputString,
                 TimingClass.DATE_TIME,
                 TimingClass.DATE_TIME_ABRV);
@@ -110,7 +108,7 @@ public final class ConversionsClass {
      * @return converted String
      */
     private String convertTimestampWithMilliseconds(final String inputString) {
-        return TimingClass.LocalizationSubClass.convertTimestampFriendly(
+        return TimeLocalizationClass.convertTimestampFriendly(
                 inputString,
                 TimingClass.DATE_TIME_MS,
                 TimingClass.DATE_TIME_MS_ABRV);

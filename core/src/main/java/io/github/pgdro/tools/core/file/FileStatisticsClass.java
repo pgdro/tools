@@ -3,6 +3,7 @@ package io.github.pgdro.tools.core.file;
 import io.github.pgdro.tools.core.BasicStructuresClass;
 import io.github.pgdro.tools.core.ConfigurationClass;
 import io.github.pgdro.tools.core.log.LogExposureClass;
+import io.github.pgdro.tools.core.time.TimeLocalizationClass;
 import io.github.pgdro.tools.core.time.TimingClass;
 import io.github.pgdro.tools.core.time.TimingClass.AgingSubClass;
 import java.io.BufferedWriter;
@@ -197,7 +198,7 @@ public final class FileStatisticsClass {
     public static List<Properties> getFileStatisticsIntoListOfProperties(
             final String strFolderName,
             final ZonedDateTime inRefTimeStamp) {
-        TimingClass.LocalizationSubClass.setReferenceTimeStampValueForAgingCalculation(inRefTimeStamp);
+        TimeLocalizationClass.setReferenceTimeStampValueForAgingCalculation(inRefTimeStamp);
         if (!FILE_STATISTICS.isEmpty()) {
             FILE_STATISTICS.clear();
         }
@@ -268,9 +269,9 @@ public final class FileStatisticsClass {
         final String fileSizeDynamic = BasicStructuresClass.NumberConversionSubClass.convertUnits(fileSize,
                 "binary");
         fileProperties.put(ConfigurationClass.STR_SIZE, fileSizeDynamic);
-        final ZonedDateTime zFileTimeStamp = TimingClass.LocalizationSubClass.getFileLastModifiedZonedDateTime(file);
+        final ZonedDateTime zFileTimeStamp = TimeLocalizationClass.getFileLastModifiedZonedDateTime(file);
         fileProperties.put("Last Modified Timestamp",
-                TimingClass.LocalizationSubClass.convertZonedTimestampFriendly(zFileTimeStamp,
+                TimeLocalizationClass.convertZonedTimestampFriendly(zFileTimeStamp,
                         TimingClass.DATE_TIME_MS));
         final String lastModifAging = AgingSubClass.computeAgingIntoHumanReadableWords(zFileTimeStamp, inRefTimeStamp);
         fileProperties.put("Last Modified Aging", lastModifAging);

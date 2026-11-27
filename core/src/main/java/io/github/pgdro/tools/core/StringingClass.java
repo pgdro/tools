@@ -261,6 +261,16 @@ public final class StringingClass {
         }
 
         /**
+         * Check if String is actually a Maven Package
+         *
+         * @param inputString string to evaluate
+         * @return True if given String is actually a Maven Package
+         */
+        public static boolean isStringActuallyMavenPackage(final String inputString) {
+            return RegularExpressionsClass.ValidationSubClass.isStringActuallySomething(inputString, "MavenPackage");
+        }
+
+        /**
          * Check if String is actually Numeric
          *
          * @param inputString string to evaluate
@@ -268,6 +278,17 @@ public final class StringingClass {
          */
         public static boolean isStringActuallyNumeric(final String inputString) {
             return RegularExpressionsClass.ValidationSubClass.isStringActuallySomething(inputString, "numeric");
+        }
+
+        /**
+         * Check if String is actually RFC_1123_DATE_TIME
+         *
+         * @param inputString string to evaluate
+         * @return True if given String is actually Long Time-stamp w. milliseconds
+         */
+        public static boolean isStringActuallyRfc1123DateTime(final String inputString) {
+            return RegularExpressionsClass.ValidationSubClass.isStringActuallySomething(inputString,
+                    RegularExpressionsClass.REGEXP_TS_RFC1123);
         }
 
         /**
@@ -279,6 +300,23 @@ public final class StringingClass {
         public static boolean isStringActuallyTimestamp(final String inputString) {
             return RegularExpressionsClass.ValidationSubClass.isStringActuallySomething(inputString,
                     ConfigurationClass.STR_TIMESTAMP);
+        }
+
+        /**
+         * Check if String is actually Time-stamp / w. milliseconds / RFC_1123_DATE_TIME
+         *
+         * @param inputString string to evaluate
+         * @return True if given String is actually Time-stamp
+         */
+        public static boolean isStringActuallyTimestampMultiple(final String inputString) {
+            return RegularExpressionsClass.ValidationSubClass.isStringActuallySomething(inputString,
+                    ConfigurationClass.STR_TIMESTAMP)
+                    || RegularExpressionsClass.ValidationSubClass.isStringActuallySomething(inputString,
+                            ConfigurationClass.STR_TS_MSEC)
+                    || RegularExpressionsClass.ValidationSubClass.isStringActuallySomething(inputString,
+                            ConfigurationClass.STR_DATE_HRMN)
+                    || RegularExpressionsClass.ValidationSubClass.isStringActuallySomething(inputString,
+                            RegularExpressionsClass.REGEXP_TS_RFC1123);
         }
 
         /**
@@ -352,21 +390,12 @@ public final class StringingClass {
          * @param inString Original string
          * @return String
          */
-        private static String encloseStringWithCharacter(final String inString, final char inChar) {
-            final StringBuilder strBuilder = new StringBuilder();
-            final String strBothEnclosed =  "^" + inChar + ".*" + inChar + "$";
-            final String strStartEnclosed =  "^" + inChar + ".*[^" + inChar + "]$";
-            final String strEndEnclosed =  "^[^" + inChar + "].*" + inChar + "$";
-            if (inString.matches(strBothEnclosed)) { // is already enclosed
-                strBuilder.append(inString);
-            } else if (inString.matches(strStartEnclosed)) { // has only start enclosed
-                strBuilder.append(inString).append('\"');
-            } else if (inString.matches(strEndEnclosed)) { // has only end enclosed
-                strBuilder.append('\"').append(inString);
-            } else { // does not have neither start nor end enclosed
-                strBuilder.append('\"').append(inString).append('\"');
-            }
-            return strBuilder.toString();
+        @NonNull
+        private static String encloseStringWithCharacter(@NonNull final String inString, final char inChar) {
+            final String strChar = String.valueOf(inChar);
+            final String strPrefix = inString.startsWith(strChar) ? "" : strChar;
+            final String strSuffix = inString.endsWith(strChar) ? "" : strChar;
+            return strPrefix + inString + strSuffix;
         }
 
         /**
@@ -374,12 +403,9 @@ public final class StringingClass {
          * @param inString Original string
          * @return String
          */
+        @NonNull
         public static String encloseStringIfContainsSpace(@NonNull final String inString, final char inChar) {
-            String strReturn = inString;
-            if (inString.contains(" ")) {
-                strReturn = encloseStringWithCharacter(inString, inChar);
-            }
-            return strReturn;
+            return inString.contains(" ") ? encloseStringWithCharacter(inString, inChar) : inString;
         }
 
         /**

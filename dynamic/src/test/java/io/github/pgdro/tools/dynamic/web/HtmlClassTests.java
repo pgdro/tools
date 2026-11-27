@@ -4,11 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import io.github.pgdro.tools.core.ConfigurationClass;
 import io.github.pgdro.tools.core.ProjectClass;
-import io.github.pgdro.tools.core.time.TimingClass;
-import io.github.pgdro.tools.dynamic.web.html.FileInfoClass;
-import io.github.pgdro.tools.dynamic.web.html.HtmlClass;
-import io.github.pgdro.tools.dynamic.web.html.SelectInputClass;
-import io.github.pgdro.tools.dynamic.web.html.TableClass;
+import io.github.pgdro.tools.core.file.FileInfoClass;
+import io.github.pgdro.tools.core.time.TimeLocalizationClass;
+import io.github.pgdro.tools.core.web.HtmlClass;
+import io.github.pgdro.tools.core.web.SelectInputClass;
+import io.github.pgdro.tools.core.web.TableClass;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -133,7 +134,7 @@ class HtmlClassTests {
     @DisplayName("TableSubClass.getListOfSequencedMapIntoHtmlTable generates table rows, headers and tabs when New Tab feature is used")
     void testGetListOfSequencedMapIntoHtmlTableProducesTableAndTabs() {
         final SequencedMap<Object, Object> rec1 = new LinkedHashMap<>();
-        TimingClass.LocalizationSubClass.setOutputTimeZone(ZoneId.systemDefault().toString());
+        TimeLocalizationClass.setOutputTimeZone(ZoneId.systemDefault().toString());
         rec1.put(ConfigurationClass.STR_CATEGORY, "A");
         rec1.put(ConfigurationClass.STR_NAME, "Item1");
         rec1.put("Quantity", "10");
