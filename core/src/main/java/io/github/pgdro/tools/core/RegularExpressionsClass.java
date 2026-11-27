@@ -34,6 +34,11 @@ public final class RegularExpressionsClass {
     private static final String REGEXP_AGE_TIME = "[+-]([0-1]\\d|2[0-3])\\:[0-5]\\d\\:[0-5]\\d";
     /** Regular Expression for short form Age as Time exact */
     private static final String REGEXP_AGE_TIME9 = "^" + REGEXP_AGE_TIME + "$";
+    /** Regular Expression for Age with Hour and Minutes */
+    private static final String REGEXP_AGE_HM
+            = "[+-]\\d{4}-(0\\d|1[0-1])-([0-2]\\d|30)\\s([0-1]\\d|2[0-3])\\:[0-5]\\d";
+    /** Regular Expression for short form Age as Time-stamp full string */
+    private static final String REGEXP_AGE_HM9 = "^" + REGEXP_AGE_HM + "$";
     /** Regular Expression for short form Age as Time-stamp */
     private static final String REGEXP_AGE_TS
             = "[+-]\\d{4}-(0\\d|1[0-1])-([0-2]\\d|30)\\s([0-1]\\d|2[0-3])\\:[0-5]\\d\\:[0-5]\\d";
@@ -111,6 +116,8 @@ public final class RegularExpressionsClass {
             = "^[0-9.]+(|\\.(Alpha|Beta|CR|Final|RC)|-(alpha|alpha-|Beta|beta|beta-|M|pre1|RC|rc|rc-)\\d{1,2})$";
     /** string constant for agingDate */
     private static final String STR_AGING_DATE = "agingDate";
+    /** string constant for agingHourMinutes */
+    private static final String STR_AGING_HM = "agingHourMinutes";
     /** string constant for agingTime */
     private static final String STR_AGING_TIME = "agingTime";
     /** string constant for agingTimestamp */
@@ -152,6 +159,7 @@ public final class RegularExpressionsClass {
         sortedRegExp.put(STR_MAVEN_PKG, REGEXP_MAVEN_PKG);
         sortedRegExp.put(STR_AGING_TS_MS, REGEXP_AGE_TS_MS);
         sortedRegExp.put(STR_AGING_TS, REGEXP_AGE_TS);
+        sortedRegExp.put(STR_AGING_HM, REGEXP_AGE_HM);
         sortedRegExp.put(STR_AGING_DATE, REGEXP_AGE_DATE);
         sortedRegExp.put(STR_AGING_TIME, REGEXP_AGE_TIME);
         sortedRegExp.put(ConfigurationClass.STR_TS_MSEC, "");
@@ -254,6 +262,7 @@ public final class RegularExpressionsClass {
                 STR_MAVEN_PKG,
                 STR_AGING_TS,
                 STR_AGING_TS_MS,
+                STR_AGING_HM,
                 STR_AGING_DATE,
                 ConfigurationClass.STR_TS_MSEC,
                 ConfigurationClass.STR_TIMESTAMP,
@@ -326,7 +335,7 @@ public final class RegularExpressionsClass {
                             return String.format("<a href=\"%s\" target=\"_blank\">%s</a>", strUrl, text);
                         }
                     }
-                    case STR_AGING_TS_MS, STR_AGING_TS, STR_AGING_TIME, STR_AGING_DATE -> {
+                    case STR_AGING_TS_MS, STR_AGING_TS, STR_AGING_TIME, STR_AGING_HM, STR_AGING_DATE -> {
                         final TimingClass.AgingInfoRecord ageComponents
                                 = ConversionSubClass.convertAgingTimestampStringIntoAgingComponents(text);
                         String strZeroValue = "INSTANT (less than 1 millisecond)";
@@ -411,7 +420,7 @@ public final class RegularExpressionsClass {
                     months     = Integer.parseInt(inString.substring(6, 8));
                     days       = Integer.parseInt(inString.substring(9, 11));
                     break;
-                case 16:
+                case 16, 17:
                     years      = Integer.parseInt(inString.substring(1, 5));
                     months     = Integer.parseInt(inString.substring(6, 8));
                     days       = Integer.parseInt(inString.substring(9, 11));
@@ -449,11 +458,12 @@ public final class RegularExpressionsClass {
             return switch (inputLength) {
                 case 9  -> REGEXP_AGE_TIME9;
                 case 11 -> REGEXP_AGE_DATE9;
+                case 17 -> REGEXP_AGE_HM9;
                 case 20 -> REGEXP_AGE_TS9;
                 case 24 -> REGEXP_AGE_TS_MS9;
                 default -> {
                     final String strFeedbackErr = String.format(
-                            "An Aging Timestamp String is expected to have either 20 or 24 characters"
+                            "An Aging Timestamp String is expected to have either 9/11/17/20/24 characters"
                                     +" but given one %s has %s number of characters... %s",
                         inString,
                         inputLength,
@@ -538,6 +548,7 @@ public final class RegularExpressionsClass {
             REG_EXP_PROPS.put(STR_AGING_TS_MS, REGEXP_AGE_TS_MS9);
             REG_EXP_PROPS.put(STR_AGING_TS, REGEXP_AGE_TS9);
             REG_EXP_PROPS.put(STR_AGING_TIME, REGEXP_AGE_TIME9);
+            REG_EXP_PROPS.put(STR_AGING_HM, REGEXP_AGE_HM9);
             REG_EXP_PROPS.put(STR_AGING_DATE, REGEXP_AGE_DATE9);
             REG_EXP_PROPS.put(ConfigurationClass.STR_TIMESTAMP, REGEXP_TS);
             REG_EXP_PROPS.put(ConfigurationClass.STR_TS_MSEC, REGEXP_TS_MS);
