@@ -105,7 +105,7 @@ public final class RegularExpressionsClass {
     private static final String REGEXP_TS_MS = REGEXP_DATE + "\\s" + REGEXP_TIME + "\\.\\d{3}";
     /** Regular Expression for RFC_1123_DATE_TIME identification/validation */
     public static final String REGEXP_TS_RFC1123 = "^(Mon|Tue|Wed|Thu|Fri|Sat|Sun), "
-            +"\\d{1,2} (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \\d{4} \\d{2}:\\d{2}:\\d{2} GMT$";
+            + "\\d{1,2} (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \\d{4} \\d{2}:\\d{2}:\\d{2} GMT$";
     /** Version Patterns Map */
     private static final String REGEXP_VERSION
             = "^[0-9.]+(|\\.(Alpha|Beta|CR|Final|RC)|-(alpha|alpha-|Beta|beta|beta-|M|pre1|RC|rc|rc-)\\d{1,2})$";
@@ -525,7 +525,7 @@ public final class RegularExpressionsClass {
          * Loading Regular Expression Properties
          */
         private static void loadRegularExpressionProperties() {
-            REG_EXP_PROPS.put("MavenPackage", REGEXP_MAVEN_PKG);
+            REG_EXP_PROPS.put(STR_MAVEN_PKG, REGEXP_MAVEN_PKG);
             REG_EXP_PROPS.put("byteSize", REGEXP_BYTE_SIZE);
             REG_EXP_PROPS.put("decimal", REGEXP_NO_DECIMAL);
             REG_EXP_PROPS.put("shortAging", REGEXP_AGING_ABRV);
